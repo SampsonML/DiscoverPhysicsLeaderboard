@@ -47,18 +47,15 @@ CI runs the same command on every PR and fails if `data/results.json` is out of 
     └── validate.yml            # regenerate + schema-validate on PR
 ```
 
-## Adding figures
+## Figures
 
-Drop the PNG figures from the paper into `figures/`:
+The Pareto and Pass@k panels (Fig. 2a, 2b) and the per-world heatmap (Fig. 4)
+are rendered interactively in the browser by `leaderboard.js` using Plotly,
+straight from `data/results.json`. They update automatically when the data
+changes — no figures to upload.
 
-| File              | Source                        |
-| ----------------- | ----------------------------- |
-| `pipeline.png`    | Fig. 1 (benchmark schematic)  |
-| `pareto.png`      | Fig. 2 left panel             |
-| `passk.png`       | Fig. 2 middle panel           |
-| `rounds.png`      | Fig. 3 (guided vs random)     |
-
-The site degrades gracefully if any are missing. The per-world heatmap section is rendered live from `data/results.json`, so no figure is needed for it.
+The only static figure is the pipeline schematic, loaded from
+`figures/pipeline.png`. The page degrades gracefully if it is missing.
 
 ## Adding the paper PDF
 

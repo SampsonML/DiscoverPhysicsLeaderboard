@@ -9,8 +9,7 @@ const COLUMNS = [
   { key: 'pass_3',      label: 'Pass@3',      sortable: true,  type: 'pass',    desc: true },
   { key: 'pass_1',      label: 'Pass@1',      sortable: true,  type: 'pass',    desc: true },
   { key: 'explanation', label: 'Explanation', sortable: true,  type: 'score',   desc: true },
-  { key: 'mse',         label: 'Norm. MSE',   sortable: true,  type: 'mse',     desc: false },
-  { key: 'trials',      label: 'Trials',      sortable: true,  type: 'trials',  desc: true }
+  { key: 'mse',         label: 'Norm. MSE',   sortable: true,  type: 'mse',     desc: false }
 ];
 
 let state = {
@@ -26,6 +25,7 @@ async function load() {
     state.data = await res.json();
     renderTable();
     renderHeatmap();
+    renderFigures();
     renderMetadata();
   } catch (err) {
     document.querySelector('#results-table').innerHTML =
@@ -37,9 +37,6 @@ function flatten(entry) {
   return {
     raw: entry,
     model: entry.model,
-    passed: entry.passed,
-    passed_total: entry.passed_total,
-    trials: entry.passed,
     pass_1: entry.pass_at_k['1'].mean,
     pass_3: entry.pass_at_k['3'].mean,
     pass_5: entry.pass_at_k['5'].mean,
@@ -125,8 +122,6 @@ function cellHtml(col, r, i, maxPass5) {
     }
     case 'mse':
       return `<span class="num-cell">${formatMSE(r.mse)}</span>`;
-    case 'trials':
-      return `<span class="num-cell">${r.passed}/${r.passed_total}</span>`;
     default:
       return '';
   }
@@ -189,6 +184,162 @@ function renderHeatmap() {
   }
   html += '</tbody></table>';
   root.innerHTML = html;
+}
+
+// ---------------- Figures ----------------
+
+const PLOT_FONT    = 'Inconsolata, Menlo, monospace';
+const COLOR_ACCENT = '#b8390e';
+const COLOR_INK    = '#1a1a1a';
+const COLOR_RULE   = '#d8d4c8';
+const COLOR_PAPER  = '#fafaf7';
+
+function renderFigures() {
+  if (!state.data || typeof Plotly === 'undefined') return;
+  renderPareto();
+  renderPassK();
+}
+
+function renderPareto() {
+  const el = document.querySelector('#pareto-plot');
+  if (!el) return;
+
+  const rows = [...state.data.results].sort(
+    (a, b) => b.pass_at_k['5'].mean - a.pass_at_k['5'].mean
+  );
+  const mses = rows.map(r => r.normalized_mse.mean);
+  const nonzero = mses.filter(m => m > 0);
+  // Plotly's log axis can't render zero. Floor 0-valued MSEs at one decade
+  // below the smallest non-zero value so the point still appears.
+  const floor = nonzero.length ? Math.min(...nonzero) / 10 : 1e-5;
+  const xs = mses.map(m => m > 0 ? m : floor);
+  const ys = rows.map(r => r.explanation_score.mean);
+  const colors = rows.map((_, i) => i === 0 ? COLOR_ACCENT : COLOR_INK);
+
+  const trace = {
+    x: xs,
+    y: ys,
+    text: rows.map(r => r.model),
+    textposition: 'middle right',
+    textfont: { size: 10, family: PLOT_FONT, color: COLOR_INK },
+    mode: 'markers+text',
+    type: 'scatter',
+    marker: {
+      size: 11,
+      color: colors,
+      opacity: 0.9,
+      line: { color: COLOR_INK, width: 0.5 }
+    },
+    customdata: rows.map(r => [r.normalized_mse.mean, r.explanation_score.se]),
+    hovertemplate:
+      '<b>%{text}</b><br>' +
+      'Norm. MSE: %{customdata[0]:.4g}<br>' +
+      'Explanation: %{y:.2f} ± %{customdata[1]:.2f}' +
+      '<extra></extra>',
+  };
+
+  Plotly.newPlot(el, [trace], {
+    xaxis: {
+      title: { text: 'Norm. MSE (log; lower is better)', standoff: 10 },
+      type: 'log',
+      gridcolor: COLOR_RULE,
+      zeroline: false
+    },
+    yaxis: {
+      title: { text: 'Explanation score (higher is better)', standoff: 10 },
+      range: [0, 1],
+      gridcolor: COLOR_RULE,
+      zeroline: false
+    },
+    margin: { t: 20, r: 30, b: 60, l: 65 },
+    paper_bgcolor: 'transparent',
+    plot_bgcolor: 'transparent',
+    font: { family: PLOT_FONT, size: 11, color: COLOR_INK },
+    showlegend: false,
+    hoverlabel: {
+      bgcolor: COLOR_INK,
+      bordercolor: COLOR_INK,
+      font: { color: COLOR_PAPER, family: PLOT_FONT }
+    },
+  }, {
+    displaylogo: false,
+    responsive: true,
+    modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+  });
+}
+
+function renderPassK() {
+  const el = document.querySelector('#passk-plot');
+  if (!el) return;
+
+  const rows = [...state.data.results].sort(
+    (a, b) => b.pass_at_k['5'].mean - a.pass_at_k['5'].mean
+  );
+  const ks = [1, 2, 3, 4, 5];
+
+  const traces = rows.map((r, i) => ({
+    x: ks,
+    y: ks.map(k => r.pass_at_k[String(k)].mean),
+    error_y: {
+      type: 'data',
+      array: ks.map(k => r.pass_at_k[String(k)].se ?? 0),
+      visible: true,
+      thickness: 1,
+      width: 3,
+      color: 'rgba(0,0,0,0.3)',
+    },
+    name: r.model,
+    mode: 'lines+markers',
+    line: {
+      width: i === 0 ? 2.5 : 1.4,
+      color: i === 0 ? COLOR_ACCENT : undefined,
+    },
+    marker: {
+      size: i === 0 ? 8 : 5,
+      color: i === 0 ? COLOR_ACCENT : undefined,
+    },
+    type: 'scatter',
+    hovertemplate:
+      '<b>%{fullData.name}</b><br>' +
+      'k = %{x}<br>' +
+      'Pass@k = %{y:.2f}%' +
+      '<extra></extra>',
+  }));
+
+  Plotly.newPlot(el, traces, {
+    xaxis: {
+      title: { text: 'k (seeds sampled)', standoff: 10 },
+      dtick: 1,
+      range: [0.7, 5.3],
+      gridcolor: COLOR_RULE,
+      zeroline: false
+    },
+    yaxis: {
+      title: { text: 'Pass@k (%)', standoff: 10 },
+      gridcolor: COLOR_RULE,
+      zerolinecolor: COLOR_RULE,
+      rangemode: 'tozero',
+    },
+    margin: { t: 20, r: 30, b: 110, l: 65 },
+    paper_bgcolor: 'transparent',
+    plot_bgcolor: 'transparent',
+    font: { family: PLOT_FONT, size: 11, color: COLOR_INK },
+    legend: {
+      orientation: 'h',
+      x: 0, y: -0.22,
+      xanchor: 'left', yanchor: 'top',
+      font: { family: PLOT_FONT, size: 10 },
+    },
+    hoverlabel: {
+      bgcolor: COLOR_INK,
+      bordercolor: COLOR_INK,
+      font: { color: COLOR_PAPER, family: PLOT_FONT }
+    },
+  }, {
+    displaylogo: false,
+    responsive: true,
+    modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+  });
 }
 
 function escapeHtml(s) {

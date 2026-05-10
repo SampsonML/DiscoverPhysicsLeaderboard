@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
 </head>
 <body>
 
@@ -113,10 +114,8 @@
       A world is considered a pass if per-trajectory normalized MSE is below 0.1
       <em>and</em> the explanation score is &ge; 0.75. Pass@k is the expected percentage
       of worlds passed when k seeds are sampled (without replacement) from a 5-seed
-      pool, averaged over 1,000 Monte Carlo draws. The <em>Trials</em> column pools
-      every (world, seed) trial together: x/y means x trial passes out of y trials.
-      Norm. MSE is the geometric mean of per-trajectory normalized MSE; lower is
-      better.
+      pool, averaged over 1,000 Monte Carlo draws. Norm. MSE is the geometric mean
+      of per-trajectory normalized MSE; lower is better.
     </p>
   </section>
 
@@ -148,7 +147,9 @@
 
     <div class="figures-grid">
       <figure>
-        <img src="figures/pareto.png" alt="Pareto plot of explanation score vs MSE" onerror="this.alt='[figure pending]'; this.style.background='#efebe0'; this.style.minHeight='280px'">
+        <div id="pareto-plot" class="plotly-fig">
+          <div class="loading">Loading plot…</div>
+        </div>
         <figcaption>
           <strong>Fig. 2a · Pareto frontier</strong>
           Explanation score against normalized MSE. The strongest models reach the upper-left
@@ -158,20 +159,13 @@
       </figure>
 
       <figure>
-        <img src="figures/passk.png" alt="Pass@k as a function of k" onerror="this.alt='[figure pending]'; this.style.background='#efebe0'; this.style.minHeight='280px'">
+        <div id="passk-plot" class="plotly-fig">
+          <div class="loading">Loading plot…</div>
+        </div>
         <figcaption>
           <strong>Fig. 2b · Pass@k</strong>
-          Expected fraction of worlds passed from k independent attempts. All models except
-          gpt-oss-20b show pass@5 substantially larger than pass@1.
-        </figcaption>
-      </figure>
-
-      <figure>
-        <img src="figures/rounds.png" alt="Performance vs experimental rounds" onerror="this.alt='[figure pending]'; this.style.background='#efebe0'; this.style.minHeight='280px'">
-        <figcaption>
-          <strong>Fig. 3 · Guided vs random</strong>
-          Pass rate, explanation score, and MSE as a function of round budget for the two
-          strongest models, with cross-hatched bars showing randomized experimentation.
+          Expected fraction of worlds passed from k independent attempts. Click any
+          model in the legend to toggle its line.
         </figcaption>
       </figure>
     </div>

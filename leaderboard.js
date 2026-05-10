@@ -255,13 +255,13 @@ function renderPareto() {
 
   Plotly.newPlot(el, [trace], {
     xaxis: {
-      title: { text: 'Norm. MSE (log; lower is better)', standoff: 12 },
+      title: { text: 'Norm. MSE (log; lower is better)', standoff: 14, font: { size: 16, family: PLOT_FONT, color: COLOR_INK } },
       type: 'log',
       gridcolor: COLOR_RULE,
       zeroline: false
     },
     yaxis: {
-      title: { text: 'Explanation score (higher is better)', standoff: 12 },
+      title: { text: 'Explanation score (higher is better)', standoff: 14, font: { size: 16, family: PLOT_FONT, color: COLOR_INK } },
       range: [0, yMax],
       gridcolor: COLOR_RULE,
       zeroline: false
@@ -336,14 +336,14 @@ function renderPassK() {
 
   Plotly.newPlot(el, traces, {
     xaxis: {
-      title: { text: 'k (seeds sampled)', standoff: 12 },
+      title: { text: 'k (seeds sampled)', standoff: 14, font: { size: 16, family: PLOT_FONT, color: COLOR_INK } },
       dtick: 1,
       range: [0.7, 5.3],
       gridcolor: COLOR_RULE,
       zeroline: false
     },
     yaxis: {
-      title: { text: 'Pass@k (%)', standoff: 12 },
+      title: { text: 'Pass@k (%)', standoff: 14, font: { size: 16, family: PLOT_FONT, color: COLOR_INK } },
       gridcolor: COLOR_RULE,
       zerolinecolor: COLOR_RULE,
       rangemode: 'tozero',

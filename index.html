@@ -26,7 +26,7 @@
     Anonymous Authors &nbsp;·&nbsp; Submitted to NeurIPS 2026
   </p>
   <nav class="primary">
-    <a href="#abstract">Abstract</a>
+    <a href="#abstract">Overview</a>
     <a href="#leaderboard">Leaderboard</a>
     <a href="#heatmap">Per-world</a>
     <a href="#figures">Figures</a>
@@ -39,21 +39,29 @@
 
 <main>
 
-  <!-- ABSTRACT -->
+  <!-- OVERVIEW -->
   <section id="abstract">
     <div class="section-head">
       <span class="section-num">§ 01</span>
-      <h2>Abstract</h2>
+      <h2>Overview</h2>
       <span class="section-meta">3 min read</span>
     </div>
 
-    <div class="abstract">
-      <figure class="pipeline-fig">
-        <img src="figures/pipeline.png" alt="Schematic of the DiscoverPhysics benchmarking pipeline" onerror="this.style.display='none'">
-        <figcaption>Fig. 1 &middot; The benchmark loop</figcaption>
-      </figure>
+    <figure class="pipeline-fig">
+      <img src="figures/pipeline.png" alt="Schematic of the DiscoverPhysics benchmarking pipeline" onerror="this.parentElement.style.display='none'">
+      <figcaption>
+        <strong>Fig. 1 &middot; The benchmark loop.</strong>
+        For each world, the agent proposes initial conditions for an N-body simulator,
+        observes the resulting noisy trajectories, and after a fixed budget of
+        experimentation rounds submits both a natural-language explanation and a
+        Python implementation of the inferred law of motion. Both outputs are scored
+        against the world's hidden ground-truth physics &mdash; the explanation by an
+        LLM judge, the implementation by simulating it forward and comparing
+        trajectories.
+      </figcaption>
+    </figure>
 
-      <div class="abstract-prose">
+    <div class="abstract-prose">
         <p>
           Frontier LLMs perform strongly across physics evaluations, but it is hard to disentangle
           genuine reasoning from recall of established science. <strong>DiscoverPhysics</strong> asks an
@@ -88,7 +96,6 @@
             <span class="label">Best pass@5</span>
           </div>
         </div>
-      </div>
     </div>
   </section>
 
@@ -147,21 +154,18 @@
 
     <div class="figures-grid">
       <figure>
-        <div id="pareto-plot" class="plotly-fig">
-          <div class="loading">Loading plot…</div>
-        </div>
+        <div id="pareto-plot" class="plotly-fig"></div>
         <figcaption>
           <strong>Fig. 2a · Pareto frontier</strong>
           Explanation score against normalized MSE. The strongest models reach the upper-left
           corner; some achieve low MSE without high explanation scores, indicating fitting
-          without conceptual understanding.
+          without conceptual understanding. Hover any marker for the full model identity
+          and stats.
         </figcaption>
       </figure>
 
       <figure>
-        <div id="passk-plot" class="plotly-fig">
-          <div class="loading">Loading plot…</div>
-        </div>
+        <div id="passk-plot" class="plotly-fig"></div>
         <figcaption>
           <strong>Fig. 2b · Pass@k</strong>
           Expected fraction of worlds passed from k independent attempts. Click any

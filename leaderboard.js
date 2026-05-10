@@ -203,6 +203,7 @@ function renderFigures() {
 function renderPareto() {
   const el = document.querySelector('#pareto-plot');
   if (!el) return;
+  el.innerHTML = '';
 
   const rows = [...state.data.results].sort(
     (a, b) => b.pass_at_k['5'].mean - a.pass_at_k['5'].mean
@@ -210,51 +211,60 @@ function renderPareto() {
   const mses = rows.map(r => r.normalized_mse.mean);
   const nonzero = mses.filter(m => m > 0);
   // Plotly's log axis can't render zero. Floor 0-valued MSEs at one decade
-  // below the smallest non-zero value so the point still appears.
+  // below the smallest non-zero value so the point still appears; the hover
+  // tooltip continues to show the true (zero) value via customdata.
   const floor = nonzero.length ? Math.min(...nonzero) / 10 : 1e-5;
   const xs = mses.map(m => m > 0 ? m : floor);
   const ys = rows.map(r => r.explanation_score.mean);
+
+  // Only the top-3 models (by Pass@5) get on-plot labels. The rest are
+  // identifiable via hover.
+  const TOP_LABELS = 3;
+  const labelText = rows.map((r, i) => i < TOP_LABELS ? '  ' + r.model : '');
+  const sizes  = rows.map((_, i) => i < TOP_LABELS ? 14 : 10);
   const colors = rows.map((_, i) => i === 0 ? COLOR_ACCENT : COLOR_INK);
+  const opacities = rows.map((_, i) => i < TOP_LABELS ? 0.95 : 0.55);
 
   const trace = {
     x: xs,
     y: ys,
-    text: rows.map(r => r.model),
+    text: labelText,
     textposition: 'middle right',
-    textfont: { size: 10, family: PLOT_FONT, color: COLOR_INK },
+    textfont: { size: 12, family: PLOT_FONT, color: COLOR_INK },
     mode: 'markers+text',
     type: 'scatter',
     marker: {
-      size: 11,
+      size: sizes,
       color: colors,
-      opacity: 0.9,
+      opacity: opacities,
       line: { color: COLOR_INK, width: 0.5 }
     },
-    customdata: rows.map(r => [r.normalized_mse.mean, r.explanation_score.se]),
+    customdata: rows.map(r => [r.model, r.normalized_mse.mean, r.explanation_score.se]),
     hovertemplate:
-      '<b>%{text}</b><br>' +
-      'Norm. MSE: %{customdata[0]:.4g}<br>' +
-      'Explanation: %{y:.2f} ± %{customdata[1]:.2f}' +
+      '<b>%{customdata[0]}</b><br>' +
+      'Norm. MSE: %{customdata[1]:.4g}<br>' +
+      'Explanation: %{y:.2f} ± %{customdata[2]:.2f}' +
       '<extra></extra>',
+    cliponaxis: false,
   };
 
   Plotly.newPlot(el, [trace], {
     xaxis: {
-      title: { text: 'Norm. MSE (log; lower is better)', standoff: 10 },
+      title: { text: 'Norm. MSE (log; lower is better)', standoff: 12 },
       type: 'log',
       gridcolor: COLOR_RULE,
       zeroline: false
     },
     yaxis: {
-      title: { text: 'Explanation score (higher is better)', standoff: 10 },
+      title: { text: 'Explanation score (higher is better)', standoff: 12 },
       range: [0, 1],
       gridcolor: COLOR_RULE,
       zeroline: false
     },
-    margin: { t: 20, r: 30, b: 60, l: 65 },
+    margin: { t: 30, r: 60, b: 70, l: 75 },
     paper_bgcolor: 'transparent',
     plot_bgcolor: 'transparent',
-    font: { family: PLOT_FONT, size: 11, color: COLOR_INK },
+    font: { family: PLOT_FONT, size: 12, color: COLOR_INK },
     showlegend: false,
     hoverlabel: {
       bgcolor: COLOR_INK,
@@ -271,6 +281,7 @@ function renderPareto() {
 function renderPassK() {
   const el = document.querySelector('#passk-plot');
   if (!el) return;
+  el.innerHTML = '';
 
   const rows = [...state.data.results].sort(
     (a, b) => b.pass_at_k['5'].mean - a.pass_at_k['5'].mean
@@ -308,27 +319,29 @@ function renderPassK() {
 
   Plotly.newPlot(el, traces, {
     xaxis: {
-      title: { text: 'k (seeds sampled)', standoff: 10 },
+      title: { text: 'k (seeds sampled)', standoff: 12 },
       dtick: 1,
       range: [0.7, 5.3],
       gridcolor: COLOR_RULE,
       zeroline: false
     },
     yaxis: {
-      title: { text: 'Pass@k (%)', standoff: 10 },
+      title: { text: 'Pass@k (%)', standoff: 12 },
       gridcolor: COLOR_RULE,
       zerolinecolor: COLOR_RULE,
       rangemode: 'tozero',
     },
-    margin: { t: 20, r: 30, b: 110, l: 65 },
+    margin: { t: 30, r: 240, b: 70, l: 75 },
     paper_bgcolor: 'transparent',
     plot_bgcolor: 'transparent',
-    font: { family: PLOT_FONT, size: 11, color: COLOR_INK },
+    font: { family: PLOT_FONT, size: 12, color: COLOR_INK },
     legend: {
-      orientation: 'h',
-      x: 0, y: -0.22,
+      orientation: 'v',
+      x: 1.02, y: 1,
       xanchor: 'left', yanchor: 'top',
-      font: { family: PLOT_FONT, size: 10 },
+      bgcolor: 'rgba(0,0,0,0)',
+      font: { family: PLOT_FONT, size: 11 },
+      itemsizing: 'constant',
     },
     hoverlabel: {
       bgcolor: COLOR_INK,

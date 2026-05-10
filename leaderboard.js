@@ -156,7 +156,7 @@ function renderHeatmap() {
   let html = '<table class="heatmap"><thead><tr>';
   html += '<th class="hm-corner"></th>';
   for (const w of worlds) {
-    html += `<th class="hm-world"><span>${escapeHtml(w)}</span></th>`;
+    html += `<th class="hm-world"><span>${escapeHtml(w.replace(/_/g, ' '))}</span></th>`;
   }
   html += '</tr></thead><tbody>';
 
@@ -172,7 +172,7 @@ function renderHeatmap() {
       const se = cell.explanation_score.se;
       const err = cell.geom_pos_err.mean;
       const seStr = se != null ? ` ± ${se.toFixed(2)}` : '';
-      const tip = `${r.model} · ${w}\n` +
+      const tip = `${r.model} · ${w.replace(/_/g, ' ')}\n` +
                   `n = ${cell.n}\n` +
                   `explanation ${score.toFixed(2)}${seStr}\n` +
                   `geom_pos_err ${formatMSE(err)}`;

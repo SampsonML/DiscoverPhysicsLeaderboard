@@ -565,7 +565,7 @@ table.heatmap tbody tr:last-child td { border-bottom: none; }
 }
 
 #passk-plot {
-  min-height: 540px;
+  min-height: 620px;
 }
 
 .figures-grid figcaption {

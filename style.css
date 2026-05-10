@@ -5,17 +5,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,800&family=Inconsolata:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap');
 
 :root {
-  --ink: #1a1a1a;
-  --paper: #fafaf7;
-  --rule: #d8d4c8;
-  --muted: #6b6b6b;
-  --soft: #efebe0;
-  --accent: #b8390e;       /* signal red, used sparingly */
-  --accent-soft: #f4d8cc;
-  --teal: #2d5a5e;         /* secondary accent for open-source rows */
-  --good: #2d5a3a;
-  --ok: #b89108;
-  --bad: #a83232;
+  /* Phosphor / Lab CRT palette — phosphor green text on oscilloscope-black,
+     CRT amber accent. */
+  --ink: #c8e8c8;          /* phosphor green text */
+  --paper: #07100c;        /* oscilloscope black background */
+  --surface: #0e1a14;      /* slightly lighter than paper, for table/card backgrounds */
+  --rule: #1a3024;         /* dim trace lines */
+  --muted: #6b8c75;        /* faded phosphor */
+  --soft: #122b1c;         /* dim green-black highlight */
+  --accent: #ffb000;       /* CRT amber, used sparingly */
+  --accent-soft: #4d3300;  /* deep amber-black */
+  --teal: #4ad9c0;         /* phosphor cyan secondary */
+  --good: #6dd96d;
+  --ok: #ffb000;
+  --bad: #e85a5a;
 
   --serif: 'Fraunces', 'Iowan Old Style', 'Palatino', Georgia, serif;
   --sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -41,8 +44,8 @@ body {
       to bottom,
       transparent 0,
       transparent 31px,
-      rgba(0,0,0,0.018) 31px,
-      rgba(0,0,0,0.018) 32px
+      rgba(255,255,255,0.025) 31px,
+      rgba(255,255,255,0.025) 32px
     );
   font-feature-settings: "kern", "liga", "onum";
 }
@@ -54,6 +57,7 @@ body {
   padding: 2.5rem var(--gutter) 2rem;
   max-width: var(--max-w);
   margin: 0 auto;
+  text-align: center;
 }
 
 .eyebrow {
@@ -61,6 +65,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  justify-content: center;
   color: var(--muted);
   margin: 0 0 0.75rem;
   display: flex;
@@ -113,6 +118,7 @@ nav.primary {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  justify-content: center;
   font-family: var(--mono);
   font-size: 0.85rem;
 }
@@ -189,7 +195,7 @@ section:last-of-type { border-bottom: none; }
   height: auto;
   display: block;
   border: 1px solid var(--rule);
-  background: white;
+  background: var(--surface);
   padding: 1rem;
 }
 
@@ -320,7 +326,7 @@ section:last-of-type { border-bottom: none; }
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--ink);
-  background: white;
+  background: var(--surface);
 }
 
 table.leaderboard {
@@ -456,7 +462,7 @@ table.leaderboard tbody tr:last-child td { border-bottom: none; }
 .heatmap-wrap {
   overflow-x: auto;
   border: 1px solid var(--ink);
-  background: white;
+  background: var(--surface);
 }
 
 table.heatmap {
@@ -492,7 +498,7 @@ table.heatmap th.hm-corner {
 }
 
 table.heatmap tbody th.hm-model {
-  background: white;
+  background: var(--surface);
   color: var(--ink);
   font-family: var(--serif);
   font-weight: 500;
@@ -514,7 +520,7 @@ table.heatmap td.hm-cell {
   text-align: center;
   border-bottom: 1px solid var(--rule);
   font-variant-numeric: tabular-nums;
-  background-color: rgba(184, 57, 14, var(--score, 0));
+  background-color: rgba(255, 176, 0, var(--score, 0));
   color: var(--ink);
   cursor: help;
 }
@@ -543,7 +549,7 @@ table.heatmap tbody tr:last-child td { border-bottom: none; }
 .figures-grid figure {
   margin: 0;
   border: 1px solid var(--rule);
-  background: white;
+  background: var(--surface);
   padding: 1rem;
 }
 
@@ -589,7 +595,7 @@ table.heatmap tbody tr:last-child td { border-bottom: none; }
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 0;
   border: 1px solid var(--ink);
-  background: white;
+  background: var(--surface);
 }
 
 .world-card {

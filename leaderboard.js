@@ -189,10 +189,12 @@ function renderHeatmap() {
 // ---------------- Figures ----------------
 
 const PLOT_FONT    = 'Inconsolata, Menlo, monospace';
-const COLOR_ACCENT = '#b8390e';
-const COLOR_INK    = '#1a1a1a';
-const COLOR_RULE   = '#d8d4c8';
-const COLOR_PAPER  = '#fafaf7';
+// Phosphor / Lab CRT palette — must mirror the CSS root variables in style.css.
+const COLOR_ACCENT = '#ffb000';   // CRT amber
+const COLOR_INK    = '#c8e8c8';   // phosphor green text
+const COLOR_RULE   = '#1a3024';   // dim trace
+const COLOR_PAPER  = '#07100c';   // oscilloscope black
+const COLOR_MUTED  = '#6b8c75';   // faded phosphor
 
 function renderFigures() {
   if (!state.data || typeof Plotly === 'undefined') return;
@@ -216,6 +218,9 @@ function renderPareto() {
   const floor = nonzero.length ? Math.min(...nonzero) / 10 : 1e-5;
   const xs = mses.map(m => m > 0 ? m : floor);
   const ys = rows.map(r => r.explanation_score.mean);
+  // Y-axis tops out just above the highest data point, rounded up to the
+  // next 0.1 for clean tick labels.
+  const yMax = Math.min(1, Math.ceil((Math.max(...ys) + 0.05) * 10) / 10);
 
   // Only the top-2 models (by Pass@5) get on-plot labels. The rest are
   // identifiable via hover.
@@ -257,7 +262,7 @@ function renderPareto() {
     },
     yaxis: {
       title: { text: 'Explanation score (higher is better)', standoff: 12 },
-      range: [0, 1],
+      range: [0, yMax],
       gridcolor: COLOR_RULE,
       zeroline: false
     },
@@ -275,7 +280,7 @@ function renderPareto() {
       font: {
         family: PLOT_FONT,
         size: 11,
-        color: '#6b6b6b'
+        color: COLOR_MUTED
       }
     }],
     hoverlabel: {

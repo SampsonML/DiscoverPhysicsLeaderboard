@@ -103,7 +103,7 @@ body {
   font-style: italic;
   font-size: 1.25rem;
   color: var(--muted);
-  margin: 0 0 1.75rem;
+  margin: 0 auto 1.75rem;
   max-width: 42rem;
 }
 
@@ -653,24 +653,26 @@ table.heatmap tbody tr:last-child td { border-bottom: none; }
 /* ---------------- Submit ---------------- */
 
 .submit-block {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--surface);
+  color: var(--ink);
   padding: 2.5rem var(--gutter);
   margin: 0 calc(-1 * var(--gutter));
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
 
 .submit-block h2 {
   font-family: var(--serif);
   font-size: 2rem;
   margin: 0 0 1rem;
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .submit-block p {
   max-width: 38rem;
   font-size: 1rem;
   line-height: 1.6;
-  color: #d8d4c8;
+  color: var(--ink);
 }
 
 .submit-block code {
@@ -696,15 +698,16 @@ table.heatmap tbody tr:last-child td { border-bottom: none; }
   transition: background 0.15s;
 }
 
-.submit-block .btn:hover { background: #d44a1a; }
+.submit-block .btn:hover { background: #ffc933; }
 
 .submit-block .btn-ghost {
   background: transparent;
-  border: 1px solid var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--ink);
   margin-left: 0.5rem;
 }
 
-.submit-block .btn-ghost:hover { background: var(--paper); color: var(--ink); }
+.submit-block .btn-ghost:hover { background: var(--ink); color: var(--paper); }
 
 /* ---------------- Footer ---------------- */
 

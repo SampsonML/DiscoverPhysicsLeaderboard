@@ -1,23 +1,22 @@
 // DiscoverPhysics leaderboard renderer
-// No build step, no framework. Fetches JSON, populates table, handles sort/filter.
+// No build step, no framework. Fetches data/results.json, populates the
+// leaderboard table and the per-world heatmap.
 
 const COLUMNS = [
-  { key: 'rank',          label: '#',          sortable: false, type: 'rank' },
-  { key: 'model_display', label: 'Model',      sortable: true,  type: 'model' },
-  { key: 'type',          label: 'Type',       sortable: true,  type: 'type' },
-  { key: 'pass_5',        label: 'Pass@5',     sortable: true,  type: 'passbar', desc: true },
-  { key: 'pass_3',        label: 'Pass@3',     sortable: true,  type: 'pass',    desc: true },
-  { key: 'pass_1',        label: 'Pass@1',     sortable: true,  type: 'pass',    desc: true },
-  { key: 'explanation',   label: 'Explanation',sortable: true,  type: 'score',   desc: true },
-  { key: 'mse',           label: 'Norm. MSE',  sortable: true,  type: 'mse',     desc: false },
-  { key: 'release_date',  label: 'Released',   sortable: true,  type: 'date',    desc: true }
+  { key: 'rank',        label: '#',           sortable: false, type: 'rank' },
+  { key: 'model',       label: 'Model',       sortable: true,  type: 'model' },
+  { key: 'pass_5',      label: 'Pass@5',      sortable: true,  type: 'passbar', desc: true },
+  { key: 'pass_3',      label: 'Pass@3',      sortable: true,  type: 'pass',    desc: true },
+  { key: 'pass_1',      label: 'Pass@1',      sortable: true,  type: 'pass',    desc: true },
+  { key: 'explanation', label: 'Explanation', sortable: true,  type: 'score',   desc: true },
+  { key: 'mse',         label: 'Norm. MSE',   sortable: true,  type: 'mse',     desc: false },
+  { key: 'trials',      label: 'Trials',      sortable: true,  type: 'trials',  desc: true }
 ];
 
 let state = {
   data: null,
   sortKey: 'pass_5',
-  sortDir: 'desc',
-  typeFilter: 'all'
+  sortDir: 'desc'
 };
 
 async function load() {
@@ -26,6 +25,7 @@ async function load() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     state.data = await res.json();
     renderTable();
+    renderHeatmap();
     renderMetadata();
   } catch (err) {
     document.querySelector('#results-table').innerHTML =
@@ -36,14 +36,13 @@ async function load() {
 function flatten(entry) {
   return {
     raw: entry,
-    model_display: entry.model_display,
-    organization: entry.organization,
-    type: entry.type,
-    release_date: entry.release_date || '',
+    model: entry.model,
+    passed: entry.passed,
+    passed_total: entry.passed_total,
+    trials: entry.passed,
     pass_1: entry.pass_at_k['1'].mean,
     pass_3: entry.pass_at_k['3'].mean,
     pass_5: entry.pass_at_k['5'].mean,
-    pass_5_se: entry.pass_at_k['5'].se,
     explanation: entry.explanation_score.mean,
     explanation_se: entry.explanation_score.se,
     mse: entry.normalized_mse.mean
@@ -65,16 +64,9 @@ function renderTable() {
   if (!state.data) return;
 
   let rows = state.data.results.map(flatten);
-
-  if (state.typeFilter !== 'all') {
-    rows = rows.filter(r => r.type === state.typeFilter);
-  }
-
   rows.sort((a, b) => compare(a, b, state.sortKey, state.sortDir));
-
   const maxPass5 = Math.max(...rows.map(r => r.pass_5 || 0), 1);
 
-  // header
   let html = '<table class="leaderboard"><thead><tr>';
   for (const col of COLUMNS) {
     const sortAttr = col.sortable ? 'data-sortable' : '';
@@ -95,7 +87,6 @@ function renderTable() {
   html += '</tbody></table>';
   root.innerHTML = html;
 
-  // wire up sort
   root.querySelectorAll('th[data-sortable]').forEach(th => {
     th.addEventListener('click', () => {
       const k = th.dataset.key;
@@ -116,12 +107,9 @@ function cellHtml(col, r, i, maxPass5) {
     case 'rank':
       return `<span class="rank ${i === 0 ? 'rank-1' : ''}">${i + 1}</span>`;
     case 'model':
-      return `<span class="model-cell">${r.model_display}</span>` +
-             `<span class="model-org">${r.organization}</span>`;
-    case 'type':
-      return `<span class="type-badge ${r.type}">${r.type === 'open-source' ? 'open' : 'proprietary'}</span>`;
+      return `<span class="model-cell">${escapeHtml(r.model)}</span>`;
     case 'passbar': {
-      const pct = (r.pass_5 || 0);
+      const pct = r.pass_5 || 0;
       const fillW = (pct / maxPass5) * 100;
       const isTop = i === 0;
       return `<span class="pass-bar ${isTop ? 'is-top' : ''}">` +
@@ -131,13 +119,14 @@ function cellHtml(col, r, i, maxPass5) {
     case 'pass':
       return `<span class="num-cell">${r[col.key].toFixed(1)}</span>`;
     case 'score': {
-      const se = r.explanation_se != null ? ` <span class="se">±${r.explanation_se.toFixed(2)}</span>` : '';
+      const se = r.explanation_se != null
+        ? ` <span class="se">±${r.explanation_se.toFixed(2)}</span>` : '';
       return `<span class="num-cell">${r.explanation.toFixed(2)}${se}</span>`;
     }
     case 'mse':
       return `<span class="num-cell">${formatMSE(r.mse)}</span>`;
-    case 'date':
-      return `<span class="num-cell">${r.release_date}</span>`;
+    case 'trials':
+      return `<span class="num-cell">${r.passed}/${r.passed_total}</span>`;
     default:
       return '';
   }
@@ -145,29 +134,69 @@ function cellHtml(col, r, i, maxPass5) {
 
 function formatMSE(v) {
   if (v == null) return '—';
+  if (v === 0) return '0';
   if (v < 0.001) return v.toExponential(1);
   if (v < 1) return v.toFixed(3);
+  if (v >= 1000) return v.toExponential(1);
   return v.toFixed(2);
 }
 
 function renderMetadata() {
   const meta = document.querySelector('#meta-stamp');
   if (meta && state.data?.metadata) {
-    meta.textContent = `v${state.data.metadata.benchmark_version} · updated ${state.data.metadata.last_updated}`;
+    const m = state.data.metadata;
+    meta.textContent = `${m.benchmark_version} · updated ${m.last_updated}`;
   }
 }
 
-// filter pills
-document.addEventListener('click', e => {
-  if (e.target.classList.contains('filter-pill')) {
-    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-    e.target.classList.add('active');
-    state.typeFilter = e.target.dataset.filter;
-    renderTable();
-  }
-});
+function renderHeatmap() {
+  const root = document.querySelector('#heatmap-table');
+  if (!root || !state.data) return;
 
-// Worlds grid
+  const worlds = state.data.metadata.worlds;
+  const rows = [...state.data.results].sort(
+    (a, b) => b.pass_at_k['5'].mean - a.pass_at_k['5'].mean
+  );
+
+  let html = '<table class="heatmap"><thead><tr>';
+  html += '<th class="hm-corner"></th>';
+  for (const w of worlds) {
+    html += `<th class="hm-world"><span>${escapeHtml(w)}</span></th>`;
+  }
+  html += '</tr></thead><tbody>';
+
+  for (const r of rows) {
+    html += `<tr><th class="hm-model">${escapeHtml(r.model)}</th>`;
+    for (const w of worlds) {
+      const cell = r.per_world?.[w];
+      if (!cell) {
+        html += '<td class="hm-cell hm-empty">—</td>';
+        continue;
+      }
+      const score = cell.explanation_score.mean;
+      const se = cell.explanation_score.se;
+      const err = cell.geom_pos_err.mean;
+      const seStr = se != null ? ` ± ${se.toFixed(2)}` : '';
+      const tip = `${r.model} · ${w}\n` +
+                  `n = ${cell.n}\n` +
+                  `explanation ${score.toFixed(2)}${seStr}\n` +
+                  `geom_pos_err ${formatMSE(err)}`;
+      const cls = score >= 0.5 ? ' hm-dark' : '';
+      html += `<td class="hm-cell${cls}" style="--score:${score.toFixed(3)}" `
+            + `title="${escapeHtml(tip)}">${score.toFixed(2)}</td>`;
+    }
+    html += '</tr>';
+  }
+  html += '</tbody></table>';
+  root.innerHTML = html;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
+}
+
 async function loadWorlds() {
   try {
     const res = await fetch('data/worlds.json');

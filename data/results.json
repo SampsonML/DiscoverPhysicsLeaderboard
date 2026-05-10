@@ -1,0 +1,1784 @@
+{
+  "metadata": {
+    "benchmark_version": "new_production_16",
+    "last_updated": "2026-05-10",
+    "num_worlds": 11,
+    "num_seeds": 5,
+    "default_rounds_budget": 16,
+    "worlds": [
+      "gravity",
+      "yukawa",
+      "hubble",
+      "ether",
+      "oscillator",
+      "circle",
+      "extra_dimensions",
+      "fractional",
+      "dark_matter",
+      "three_species",
+      "coulomb"
+    ]
+  },
+  "results": [
+    {
+      "model": "claude-opus-4-7",
+      "n_trials": 55,
+      "passed": 19,
+      "passed_total": 55,
+      "explanation_score": {
+        "mean": 0.622,
+        "se": 0.035
+      },
+      "normalized_mse": {
+        "mean": 0.001,
+        "up": 0.001,
+        "down": 0.0
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 34.89,
+          "se": 0.34,
+          "raw": "3/11"
+        },
+        "2": {
+          "mean": 42.91,
+          "se": 0.31,
+          "raw": "3/11"
+        },
+        "3": {
+          "mean": 47.13,
+          "se": 0.28,
+          "raw": "4/11"
+        },
+        "4": {
+          "mean": 51.02,
+          "se": 0.23,
+          "raw": "6/11"
+        },
+        "5": {
+          "mean": 54.55,
+          "se": 0.0,
+          "raw": "6/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.48,
+            "se": 0.033
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "coulomb": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.28,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "dark_matter": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.38,
+            "se": 0.051
+          },
+          "geom_pos_err": {
+            "mean": 251.471,
+            "up": 48.913,
+            "down": 40.948
+          }
+        },
+        "ether": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.76,
+            "se": 0.067
+          },
+          "geom_pos_err": {
+            "mean": 3.726,
+            "up": 2.935,
+            "down": 1.642
+          }
+        },
+        "extra_dimensions": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.54,
+            "se": 0.059
+          },
+          "geom_pos_err": {
+            "mean": 0.002,
+            "up": 0.004,
+            "down": 0.002
+          }
+        },
+        "fractional": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.48,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.001,
+            "down": 0.0
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.94,
+            "se": 0.053
+          },
+          "geom_pos_err": {
+            "mean": 0.006,
+            "up": 0.023,
+            "down": 0.005
+          }
+        },
+        "hubble": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.9,
+            "se": 0.04
+          },
+          "geom_pos_err": {
+            "mean": 0.005,
+            "up": 0.009,
+            "down": 0.003
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.72,
+            "se": 0.082
+          },
+          "geom_pos_err": {
+            "mean": 0.012,
+            "up": 0.081,
+            "down": 0.01
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.4,
+            "se": 0.0
+          },
+          "geom_pos_err": {
+            "mean": 4.637,
+            "up": 0.225,
+            "down": 0.214
+          }
+        },
+        "yukawa": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.96,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 0.001,
+            "up": 0.013,
+            "down": 0.001
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5.5",
+      "n_trials": 55,
+      "passed": 15,
+      "passed_total": 55,
+      "explanation_score": {
+        "mean": 0.584,
+        "se": 0.037
+      },
+      "normalized_mse": {
+        "mean": 0.0,
+        "up": 0.0,
+        "down": 0.0
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 27.15,
+          "se": 0.18,
+          "raw": "4/11"
+        },
+        "2": {
+          "mean": 30.71,
+          "se": 0.14,
+          "raw": "4/11"
+        },
+        "3": {
+          "mean": 32.76,
+          "se": 0.14,
+          "raw": "4/11"
+        },
+        "4": {
+          "mean": 34.56,
+          "se": 0.11,
+          "raw": "4/11"
+        },
+        "5": {
+          "mean": 36.36,
+          "se": 0.0,
+          "raw": "4/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.54,
+            "se": 0.053
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "coulomb": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.26,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "dark_matter": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.22,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 45.727,
+            "up": 42.691,
+            "down": 22.078
+          }
+        },
+        "ether": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.76,
+            "se": 0.035
+          },
+          "geom_pos_err": {
+            "mean": 1.046,
+            "up": 0.806,
+            "down": 0.455
+          }
+        },
+        "extra_dimensions": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.36,
+            "se": 0.06
+          },
+          "geom_pos_err": {
+            "mean": 0.001,
+            "up": 0.001,
+            "down": 0.0
+          }
+        },
+        "fractional": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.48,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.96,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "hubble": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.64,
+            "se": 0.061
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.001,
+            "down": 0.0
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.9,
+            "se": 0.028
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.4,
+            "se": 0.0
+          },
+          "geom_pos_err": {
+            "mean": 6.344,
+            "up": 1.734,
+            "down": 1.362
+          }
+        },
+        "yukawa": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.9,
+            "se": 0.088
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-oss-120b",
+      "n_trials": 51,
+      "passed": 3,
+      "passed_total": 51,
+      "explanation_score": {
+        "mean": 0.282,
+        "se": 0.029
+      },
+      "normalized_mse": {
+        "mean": 0.405,
+        "up": 0.847,
+        "down": 0.274
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 5.18,
+          "se": 0.23,
+          "raw": "2/11"
+        },
+        "2": {
+          "mean": 9.49,
+          "se": 0.24,
+          "raw": "2/11"
+        },
+        "3": {
+          "mean": 13.58,
+          "se": 0.2,
+          "raw": "2/11"
+        },
+        "4": {
+          "mean": 16.38,
+          "se": 0.11,
+          "raw": "2/11"
+        },
+        "5": {
+          "mean": 18.18,
+          "se": 0.0,
+          "raw": "2/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.12,
+            "se": 0.043
+          },
+          "geom_pos_err": {
+            "mean": 1.407,
+            "up": 0.832,
+            "down": 0.523
+          }
+        },
+        "coulomb": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.55,
+            "se": 0.102
+          },
+          "geom_pos_err": {
+            "mean": 0.204,
+            "up": 0.178,
+            "down": 0.095
+          }
+        },
+        "dark_matter": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.225,
+            "se": 0.064
+          },
+          "geom_pos_err": {
+            "mean": 2654.129,
+            "up": 8154.611,
+            "down": 2002.397
+          }
+        },
+        "ether": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.2,
+            "se": 0.068
+          },
+          "geom_pos_err": {
+            "mean": 20379.128,
+            "up": 6310836.486,
+            "down": 20313.531
+          }
+        },
+        "extra_dimensions": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.18,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 12.808,
+            "up": 307.898,
+            "down": 12.297
+          }
+        },
+        "fractional": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.325,
+            "se": 0.094
+          },
+          "geom_pos_err": {
+            "mean": 0.007,
+            "up": 0.026,
+            "down": 0.006
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.62,
+            "se": 0.086
+          },
+          "geom_pos_err": {
+            "mean": 0.002,
+            "up": 0.015,
+            "down": 0.001
+          }
+        },
+        "hubble": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.18,
+            "se": 0.033
+          },
+          "geom_pos_err": {
+            "mean": 45135.599,
+            "up": 4715410.538,
+            "down": 44707.66
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.26,
+            "se": 0.072
+          },
+          "geom_pos_err": {
+            "mean": 0.412,
+            "up": 0.836,
+            "down": 0.276
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.14,
+            "se": 0.06
+          },
+          "geom_pos_err": {
+            "mean": 6.412,
+            "up": 0.069,
+            "down": 0.068
+          }
+        },
+        "yukawa": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.375,
+            "se": 0.054
+          },
+          "geom_pos_err": {
+            "mean": 0.032,
+            "up": 0.051,
+            "down": 0.02
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "n_trials": 55,
+      "passed": 1,
+      "passed_total": 55,
+      "explanation_score": {
+        "mean": 0.316,
+        "se": 0.023
+      },
+      "normalized_mse": {
+        "mean": 0.207,
+        "up": 0.253,
+        "down": 0.114
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 1.77,
+          "se": 0.11,
+          "raw": "1/11"
+        },
+        "2": {
+          "mean": 3.44,
+          "se": 0.14,
+          "raw": "1/11"
+        },
+        "3": {
+          "mean": 5.49,
+          "se": 0.14,
+          "raw": "1/11"
+        },
+        "4": {
+          "mean": 7.29,
+          "se": 0.11,
+          "raw": "1/11"
+        },
+        "5": {
+          "mean": 9.09,
+          "se": 0.0,
+          "raw": "1/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.36,
+            "se": 0.035
+          },
+          "geom_pos_err": {
+            "mean": 0.164,
+            "up": 1.458,
+            "down": 0.147
+          }
+        },
+        "coulomb": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.28,
+            "se": 0.094
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.018,
+            "down": 0.0
+          }
+        },
+        "dark_matter": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.22,
+            "se": 0.033
+          },
+          "geom_pos_err": {
+            "mean": 222877.285,
+            "up": 5471730.432,
+            "down": 214154.246
+          }
+        },
+        "ether": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.38,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 8.495,
+            "up": 4.555,
+            "down": 2.965
+          }
+        },
+        "extra_dimensions": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.16,
+            "se": 0.036
+          },
+          "geom_pos_err": {
+            "mean": 2.978,
+            "up": 25.822,
+            "down": 2.67
+          }
+        },
+        "fractional": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.34,
+            "se": 0.045
+          },
+          "geom_pos_err": {
+            "mean": 0.068,
+            "up": 0.196,
+            "down": 0.051
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.5,
+            "se": 0.133
+          },
+          "geom_pos_err": {
+            "mean": 0.689,
+            "up": 2.232,
+            "down": 0.527
+          }
+        },
+        "hubble": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.24,
+            "se": 0.045
+          },
+          "geom_pos_err": {
+            "mean": 151.837,
+            "up": 24.145,
+            "down": 20.832
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.38,
+            "se": 0.106
+          },
+          "geom_pos_err": {
+            "mean": 0.664,
+            "up": 1.507,
+            "down": 0.461
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.34,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 15.036,
+            "up": 16.737,
+            "down": 7.92
+          }
+        },
+        "yukawa": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.28,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 9.434,
+            "up": 35.943,
+            "down": 7.473
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-5.4",
+      "n_trials": 55,
+      "passed": 1,
+      "passed_total": 55,
+      "explanation_score": {
+        "mean": 0.307,
+        "se": 0.026
+      },
+      "normalized_mse": {
+        "mean": 1.628,
+        "up": 4.633,
+        "down": 1.205
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 1.77,
+          "se": 0.11,
+          "raw": "1/11"
+        },
+        "2": {
+          "mean": 3.44,
+          "se": 0.14,
+          "raw": "1/11"
+        },
+        "3": {
+          "mean": 5.49,
+          "se": 0.14,
+          "raw": "1/11"
+        },
+        "4": {
+          "mean": 7.29,
+          "se": 0.11,
+          "raw": "1/11"
+        },
+        "5": {
+          "mean": 9.09,
+          "se": 0.0,
+          "raw": "1/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.3,
+            "se": 0.057
+          },
+          "geom_pos_err": {
+            "mean": 3.333,
+            "up": 5.005,
+            "down": 2.0
+          }
+        },
+        "coulomb": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.22,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 0.547,
+            "up": 0.408,
+            "down": 0.234
+          }
+        },
+        "dark_matter": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.14,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 344.941,
+            "up": 41.243,
+            "down": 36.838
+          }
+        },
+        "ether": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.24,
+            "se": 0.036
+          },
+          "geom_pos_err": {
+            "mean": 249112.856,
+            "up": 126612071.163,
+            "down": 248623.682
+          }
+        },
+        "extra_dimensions": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.2,
+            "se": 0.028
+          },
+          "geom_pos_err": {
+            "mean": 0.154,
+            "up": 0.512,
+            "down": 0.119
+          }
+        },
+        "fractional": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.48,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 0.031,
+            "up": 0.2,
+            "down": 0.027
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.68,
+            "se": 0.129
+          },
+          "geom_pos_err": {
+            "mean": 0.153,
+            "up": 0.477,
+            "down": 0.116
+          }
+        },
+        "hubble": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.22,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 36098752096.787,
+            "up": 640922824960257.1,
+            "down": 36096719018.138
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.1,
+            "se": 0.0
+          },
+          "geom_pos_err": {
+            "mean": 2.651,
+            "up": 4.958,
+            "down": 1.727
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.38,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 8.25,
+            "up": 0.331,
+            "down": 0.318
+          }
+        },
+        "yukawa": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.42,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 0.058,
+            "up": 0.223,
+            "down": 0.046
+          }
+        }
+      }
+    },
+    {
+      "model": "DeepSeek-R1",
+      "n_trials": 52,
+      "passed": 1,
+      "passed_total": 55,
+      "explanation_score": {
+        "mean": 0.263,
+        "se": 0.025
+      },
+      "normalized_mse": {
+        "mean": 0.09,
+        "up": 0.086,
+        "down": 0.044
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 1.9,
+          "se": 0.12,
+          "raw": "0/11"
+        },
+        "2": {
+          "mean": 3.64,
+          "se": 0.14,
+          "raw": "0/11"
+        },
+        "3": {
+          "mean": 5.38,
+          "se": 0.14,
+          "raw": "0/11"
+        },
+        "4": {
+          "mean": 7.33,
+          "se": 0.11,
+          "raw": "1/11"
+        },
+        "5": {
+          "mean": 9.09,
+          "se": 0.0,
+          "raw": "1/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.4,
+            "se": 0.046
+          },
+          "geom_pos_err": {
+            "mean": 0.161,
+            "up": 1.585,
+            "down": 0.146
+          }
+        },
+        "coulomb": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.24,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 0.004,
+            "up": 0.011,
+            "down": 0.003
+          }
+        },
+        "dark_matter": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.12,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 237.816,
+            "up": 46.378,
+            "down": 38.81
+          }
+        },
+        "ether": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.18,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 241.646,
+            "up": null,
+            "down": null
+          }
+        },
+        "extra_dimensions": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.15,
+            "se": 0.043
+          },
+          "geom_pos_err": {
+            "mean": 0.729,
+            "up": 0.548,
+            "down": 0.313
+          }
+        },
+        "fractional": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.38,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 0.205,
+            "up": 1.149,
+            "down": 0.174
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.52,
+            "se": 0.123
+          },
+          "geom_pos_err": {
+            "mean": 0.79,
+            "up": 13.233,
+            "down": 0.745
+          }
+        },
+        "hubble": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.3,
+            "se": 0.109
+          },
+          "geom_pos_err": {
+            "mean": 7.108,
+            "up": 40.799,
+            "down": 6.053
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.16,
+            "se": 0.054
+          },
+          "geom_pos_err": {
+            "mean": 3.438,
+            "up": 15.407,
+            "down": 2.811
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.16,
+            "se": 0.045
+          },
+          "geom_pos_err": {
+            "mean": 11.837,
+            "up": 6.89,
+            "down": 4.355
+          }
+        },
+        "yukawa": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.32,
+            "se": 0.043
+          },
+          "geom_pos_err": {
+            "mean": 0.611,
+            "up": 1.053,
+            "down": 0.387
+          }
+        }
+      }
+    },
+    {
+      "model": "Qwen3.5-397B-A17B",
+      "n_trials": 39,
+      "passed": 3,
+      "passed_total": 39,
+      "explanation_score": {
+        "mean": 0.367,
+        "se": 0.033
+      },
+      "normalized_mse": {
+        "mean": 0.008,
+        "up": 0.013,
+        "down": 0.005
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 5.55,
+          "se": 0.14,
+          "raw": "1/11"
+        },
+        "2": {
+          "mean": 8.29,
+          "se": 0.08,
+          "raw": "1/11"
+        },
+        "3": {
+          "mean": 9.09,
+          "se": 0.0,
+          "raw": "1/11"
+        },
+        "4": {
+          "mean": 9.09,
+          "se": 0.0,
+          "raw": "1/11"
+        },
+        "5": {
+          "mean": 9.09,
+          "se": 0.0,
+          "raw": "1/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.46,
+            "se": 0.036
+          },
+          "geom_pos_err": {
+            "mean": 4.47,
+            "up": 9.609,
+            "down": 3.051
+          }
+        },
+        "coulomb": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.3,
+            "se": 0.068
+          },
+          "geom_pos_err": {
+            "mean": 0.001,
+            "up": 0.056,
+            "down": 0.001
+          }
+        },
+        "dark_matter": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.225,
+            "se": 0.064
+          },
+          "geom_pos_err": {
+            "mean": 347.5,
+            "up": 70.611,
+            "down": 58.686
+          }
+        },
+        "ether": {
+          "n": 2,
+          "explanation_score": {
+            "mean": 0.35,
+            "se": 0.035
+          },
+          "geom_pos_err": {
+            "mean": 100.248,
+            "up": 36.728,
+            "down": 26.88
+          }
+        },
+        "extra_dimensions": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.24,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 0.003,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "fractional": {
+          "n": 3,
+          "explanation_score": {
+            "mean": 0.467,
+            "se": 0.027
+          },
+          "geom_pos_err": {
+            "mean": 0.001,
+            "up": 0.001,
+            "down": 0.001
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.76,
+            "se": 0.066
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "hubble": {
+          "n": 3,
+          "explanation_score": {
+            "mean": 0.167,
+            "se": 0.054
+          },
+          "geom_pos_err": {
+            "mean": 1227.652,
+            "up": null,
+            "down": null
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.26,
+            "se": 0.06
+          },
+          "geom_pos_err": {
+            "mean": 0.639,
+            "up": 0.964,
+            "down": 0.384
+          }
+        },
+        "three_species": {
+          "n": 1,
+          "explanation_score": {
+            "mean": 0.3,
+            "se": null
+          },
+          "geom_pos_err": {
+            "mean": 5.082,
+            "up": null,
+            "down": null
+          }
+        },
+        "yukawa": {
+          "n": 1,
+          "explanation_score": {
+            "mean": 0.4,
+            "se": null
+          },
+          "geom_pos_err": {
+            "mean": 0.005,
+            "up": null,
+            "down": null
+          }
+        }
+      }
+    },
+    {
+      "model": "Qwen3-235B-A22B-Instruct-2507-tput",
+      "n_trials": 49,
+      "passed": 1,
+      "passed_total": 49,
+      "explanation_score": {
+        "mean": 0.259,
+        "se": 0.03
+      },
+      "normalized_mse": {
+        "mean": 0.064,
+        "up": 0.108,
+        "down": 0.04
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 1.9,
+          "se": 0.12,
+          "raw": "0/11"
+        },
+        "2": {
+          "mean": 3.64,
+          "se": 0.14,
+          "raw": "0/11"
+        },
+        "3": {
+          "mean": 5.38,
+          "se": 0.14,
+          "raw": "0/11"
+        },
+        "4": {
+          "mean": 7.33,
+          "se": 0.11,
+          "raw": "1/11"
+        },
+        "5": {
+          "mean": 9.09,
+          "se": 0.0,
+          "raw": "1/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.34,
+            "se": 0.072
+          },
+          "geom_pos_err": {
+            "mean": 4.871,
+            "up": 7.167,
+            "down": 2.9
+          }
+        },
+        "coulomb": {
+          "n": 3,
+          "explanation_score": {
+            "mean": 0.233,
+            "se": 0.071
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.003,
+            "down": 0.0
+          }
+        },
+        "dark_matter": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.18,
+            "se": 0.033
+          },
+          "geom_pos_err": {
+            "mean": 519.421,
+            "up": 259.56,
+            "down": 173.073
+          }
+        },
+        "ether": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.12,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 169.688,
+            "up": 19.881,
+            "down": 17.796
+          }
+        },
+        "extra_dimensions": {
+          "n": 3,
+          "explanation_score": {
+            "mean": 0.2,
+            "se": 0.047
+          },
+          "geom_pos_err": {
+            "mean": 4.059,
+            "up": 93.789,
+            "down": 3.891
+          }
+        },
+        "fractional": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.34,
+            "se": 0.053
+          },
+          "geom_pos_err": {
+            "mean": 0.001,
+            "up": 0.014,
+            "down": 0.001
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.5,
+            "se": 0.135
+          },
+          "geom_pos_err": {
+            "mean": 0.174,
+            "up": 4.788,
+            "down": 0.168
+          }
+        },
+        "hubble": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.125,
+            "se": 0.021
+          },
+          "geom_pos_err": {
+            "mean": 314.527,
+            "up": 78.024,
+            "down": 62.516
+          }
+        },
+        "oscillator": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.2,
+            "se": 0.061
+          },
+          "geom_pos_err": {
+            "mean": 1.509,
+            "up": 1.137,
+            "down": 0.649
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.08,
+            "se": 0.033
+          },
+          "geom_pos_err": {
+            "mean": 6.824,
+            "up": 0.312,
+            "down": 0.298
+          }
+        },
+        "yukawa": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.46,
+            "se": 0.1
+          },
+          "geom_pos_err": {
+            "mean": 0.023,
+            "up": 0.137,
+            "down": 0.02
+          }
+        }
+      }
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "n_trials": 55,
+      "passed": 0,
+      "passed_total": 55,
+      "explanation_score": {
+        "mean": 0.256,
+        "se": 0.021
+      },
+      "normalized_mse": {
+        "mean": 0.981,
+        "up": 0.987,
+        "down": 0.492
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "2": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "3": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "4": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "5": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.2,
+            "se": 0.056
+          },
+          "geom_pos_err": {
+            "mean": 1.39,
+            "up": 4.541,
+            "down": 1.064
+          }
+        },
+        "coulomb": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.44,
+            "se": 0.061
+          },
+          "geom_pos_err": {
+            "mean": 0.996,
+            "up": 5.388,
+            "down": 0.841
+          }
+        },
+        "dark_matter": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.16,
+            "se": 0.035
+          },
+          "geom_pos_err": {
+            "mean": 113.18,
+            "up": 44.906,
+            "down": 32.15
+          }
+        },
+        "ether": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.22,
+            "se": 0.052
+          },
+          "geom_pos_err": {
+            "mean": 15499.961,
+            "up": 593078.079,
+            "down": 15105.191
+          }
+        },
+        "extra_dimensions": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.16,
+            "se": 0.036
+          },
+          "geom_pos_err": {
+            "mean": 15.74,
+            "up": 123.653,
+            "down": 13.963
+          }
+        },
+        "fractional": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.46,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 0.167,
+            "up": 0.944,
+            "down": 0.142
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.36,
+            "se": 0.036
+          },
+          "geom_pos_err": {
+            "mean": 5.479,
+            "up": 14.087,
+            "down": 3.945
+          }
+        },
+        "hubble": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.12,
+            "se": 0.065
+          },
+          "geom_pos_err": {
+            "mean": 152.391,
+            "up": 46.698,
+            "down": 35.744
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.2,
+            "se": 0.048
+          },
+          "geom_pos_err": {
+            "mean": 0.739,
+            "up": 1.544,
+            "down": 0.5
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.16,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 53.523,
+            "up": 311.037,
+            "down": 45.665
+          }
+        },
+        "yukawa": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.34,
+            "se": 0.053
+          },
+          "geom_pos_err": {
+            "mean": 4.494,
+            "up": 80.932,
+            "down": 4.258
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-oss-20b",
+      "n_trials": 49,
+      "passed": 0,
+      "passed_total": 49,
+      "explanation_score": {
+        "mean": 0.161,
+        "se": 0.026
+      },
+      "normalized_mse": {
+        "mean": 0.041,
+        "up": 0.071,
+        "down": 0.026
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "2": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "3": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "4": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "5": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.08,
+            "se": 0.07
+          },
+          "geom_pos_err": {
+            "mean": 2.126,
+            "up": 4.014,
+            "down": 1.39
+          }
+        },
+        "coulomb": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.3,
+            "se": 0.061
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.0,
+            "down": 0.0
+          }
+        },
+        "dark_matter": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.14,
+            "se": 0.059
+          },
+          "geom_pos_err": {
+            "mean": 932.034,
+            "up": 1099.334,
+            "down": 504.397
+          }
+        },
+        "ether": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.175,
+            "se": 0.065
+          },
+          "geom_pos_err": {
+            "mean": 120.593,
+            "up": 27.059,
+            "down": 22.1
+          }
+        },
+        "extra_dimensions": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.1,
+            "se": 0.05
+          },
+          "geom_pos_err": {
+            "mean": 3.368,
+            "up": 2.553,
+            "down": 1.452
+          }
+        },
+        "fractional": {
+          "n": 3,
+          "explanation_score": {
+            "mean": 0.433,
+            "se": 0.054
+          },
+          "geom_pos_err": {
+            "mean": 0.0,
+            "up": 0.015,
+            "down": 0.0
+          }
+        },
+        "gravity": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.4,
+            "se": 0.136
+          },
+          "geom_pos_err": {
+            "mean": 1.476,
+            "up": 0.177,
+            "down": 0.158
+          }
+        },
+        "hubble": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.12,
+            "se": 0.066
+          },
+          "geom_pos_err": {
+            "mean": 591.777,
+            "up": 831.495,
+            "down": 345.724
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.06,
+            "se": 0.035
+          },
+          "geom_pos_err": {
+            "mean": 0.768,
+            "up": 4.569,
+            "down": 0.658
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.1,
+            "se": 0.056
+          },
+          "geom_pos_err": {
+            "mean": 10.99,
+            "up": 6.106,
+            "down": 3.925
+          }
+        },
+        "yukawa": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.04,
+            "se": 0.022
+          },
+          "geom_pos_err": {
+            "mean": 0.06,
+            "up": 0.071,
+            "down": 0.032
+          }
+        }
+      }
+    }
+  ]
+}

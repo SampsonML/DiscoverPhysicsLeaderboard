@@ -27,6 +27,7 @@
   <nav class="primary">
     <a href="#abstract">Abstract</a>
     <a href="#leaderboard">Leaderboard</a>
+    <a href="#heatmap">Per-world</a>
     <a href="#figures">Figures</a>
     <a href="#worlds">Worlds</a>
     <a href="#submit">Submit</a>
@@ -99,13 +100,6 @@
     </div>
 
     <div class="controls">
-      <label>Filter
-        <span class="filter-group">
-          <button class="filter-pill active" data-filter="all">All</button>
-          <button class="filter-pill" data-filter="proprietary">Proprietary</button>
-          <button class="filter-pill" data-filter="open-source">Open</button>
-        </span>
-      </label>
       <span style="margin-left:auto; color:var(--muted); font-size:0.75rem;">
         Click any column header to sort.
       </span>
@@ -117,16 +111,38 @@
 
     <p style="font-size:0.85rem; color:var(--muted); margin-top:1rem; line-height:1.5; max-width:48rem;">
       A world is considered a pass if per-trajectory normalized MSE is below 0.1
-      and the explanation score is &ge; 0.75. Pass@k is computed by sampling k seeds
-      per world and counting worlds with at least one passing attempt, averaged over
-      1,000 resamples. Standard errors are bootstrapped from 5 seeds.
+      <em>and</em> the explanation score is &ge; 0.75. Pass@k is the expected percentage
+      of worlds passed when k seeds are sampled (without replacement) from a 5-seed
+      pool, averaged over 1,000 Monte Carlo draws. The <em>Trials</em> column pools
+      every (world, seed) trial together: x/y means x trial passes out of y trials.
+      Norm. MSE is the geometric mean of per-trajectory normalized MSE; lower is
+      better.
     </p>
+  </section>
+
+  <!-- PER-WORLD HEATMAP -->
+  <section id="heatmap">
+    <div class="section-head">
+      <span class="section-num">§ 03</span>
+      <h2>Per-world breakdown</h2>
+      <span class="section-meta">explanation score</span>
+    </div>
+
+    <p style="max-width:48rem; color:var(--muted); font-size:0.95rem; margin-bottom:1.5rem;">
+      Mean explanation score (0&nbsp;&ndash;&nbsp;1) per model and world, averaged across 5 seeds.
+      Hover any cell for the standard error and the geometric-mean trajectory error.
+      Models are ordered by Pass@5 (top) to lowest.
+    </p>
+
+    <div id="heatmap-table" class="heatmap-wrap">
+      <div class="loading">Loading heatmap…</div>
+    </div>
   </section>
 
   <!-- FIGURES -->
   <section id="figures">
     <div class="section-head">
-      <span class="section-num">§ 03</span>
+      <span class="section-num">§ 04</span>
       <h2>Results at a glance</h2>
     </div>
 
@@ -151,15 +167,6 @@
       </figure>
 
       <figure>
-        <img src="figures/heatmap.png" alt="Per-world explanation scores by model" onerror="this.alt='[figure pending]'; this.style.background='#efebe0'; this.style.minHeight='280px'">
-        <figcaption>
-          <strong>Fig. 4 · Per-world heatmap</strong>
-          Mean explanation score per model and world. Worlds are ordered from easiest to
-          hardest based on Claude Opus 4.7's performance.
-        </figcaption>
-      </figure>
-
-      <figure>
         <img src="figures/rounds.png" alt="Performance vs experimental rounds" onerror="this.alt='[figure pending]'; this.style.background='#efebe0'; this.style.minHeight='280px'">
         <figcaption>
           <strong>Fig. 3 · Guided vs random</strong>
@@ -173,7 +180,7 @@
   <!-- WORLDS -->
   <section id="worlds">
     <div class="section-head">
-      <span class="section-num">§ 04</span>
+      <span class="section-num">§ 05</span>
       <h2>The eleven worlds</h2>
       <span class="section-meta">Appendix B</span>
     </div>

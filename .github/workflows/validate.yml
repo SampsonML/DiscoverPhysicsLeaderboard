@@ -1,0 +1,66 @@
+name: Validate submission
+
+on:
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'schema/**'
+      - 'model-results/**'
+      - 'build_data.py'
+      - '.github/workflows/validate.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install jsonschema
+        run: pip install jsonschema
+
+      - name: Regenerate data/results.json from .txt summaries and assert no drift
+        run: |
+          python build_data.py
+          if ! git diff --quiet -- data/results.json; then
+            echo "::error::data/results.json is out of date with the .txt summaries."
+            echo "Run 'python build_data.py' locally and commit the updated file."
+            git --no-pager diff -- data/results.json
+            exit 1
+          fi
+
+      - name: Schema-validate every entry and cross-check world ids
+        run: |
+          python <<'PY'
+          import json, sys
+          from jsonschema import Draft202012Validator
+
+          schema  = json.load(open('schema/result.schema.json'))
+          data    = json.load(open('data/results.json'))
+          worlds  = {w['id'] for w in json.load(open('data/worlds.json'))['worlds']}
+
+          v = Draft202012Validator(schema)
+          errors, seen = [], set()
+
+          for i, entry in enumerate(data['results']):
+              tag = entry.get('model', '?')
+              for e in v.iter_errors(entry):
+                  errors.append(f"results[{i}] ({tag}): {e.message}")
+              if tag in seen:
+                  errors.append(f"results[{i}]: duplicate model id '{tag}'")
+              seen.add(tag)
+              pw = set(entry.get('per_world', {}).keys())
+              missing, extra = sorted(worlds - pw), sorted(pw - worlds)
+              if missing:
+                  errors.append(f"results[{i}] ({tag}): missing worlds {missing}")
+              if extra:
+                  errors.append(f"results[{i}] ({tag}): unknown worlds {extra}")
+
+          if errors:
+              print('\n'.join(errors))
+              sys.exit(1)
+          print(f'OK: {len(data["results"])} entries validated.')
+          PY

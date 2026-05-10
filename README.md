@@ -1,56 +1,64 @@
 # DiscoverPhysics — website
 
-Static site for the DiscoverPhysics benchmark. No build step, no framework — plain HTML, CSS, and one JavaScript file that fetches `data/results.json` and renders the leaderboard.
+Static site for the DiscoverPhysics benchmark. The browser fetches `data/results.json` (generated from the .txt summaries in `model-results/`) and renders the leaderboard plus a per-world heatmap. Plain HTML, CSS, and one JavaScript file.
 
 ## Run locally
 
+The data file is committed, so the dev loop is just:
+
 ```bash
-# any static server works
-python -m http.server 8000
-# or
-npx serve .
+python -m http.server 8000        # or:  npx serve .
 ```
 
 Then open <http://localhost:8000>.
 
+After editing anything in `model-results/` (or the renaming/normalization rules in `build_data.py`), regenerate:
+
+```bash
+python build_data.py              # writes data/results.json
+```
+
+CI runs the same command on every PR and fails if `data/results.json` is out of date with the .txt files.
+
 ## Deploy to GitHub Pages
 
-1. Push this repo to GitHub.
+1. Push the repo to GitHub.
 2. **Settings → Pages → Build and deployment**: source = "Deploy from a branch", branch = `main`, folder = `/ (root)`.
-3. Wait ~30 seconds. The site will be at `https://<user>.github.io/<repo>/`.
-
-The `.nojekyll` file disables Jekyll processing so `data/` and `schema/` are served as-is.
+3. The site will be at `https://<user>.github.io/<repo>/`.
 
 ## Project structure
 
 ```
 .
-├── index.html              # the landing page
-├── style.css               # all styling
-├── leaderboard.js          # fetches JSON, builds table
+├── index.html                  # landing page
+├── style.css                   # all styling
+├── leaderboard.js              # fetches JSON, builds table & heatmap
+├── build_data.py               # parses model-results/*.txt → data/results.json
 ├── data/
-│   ├── results.json        # leaderboard entries (one per model)
-│   └── worlds.json         # world descriptions
+│   ├── results.json            # generated leaderboard entries
+│   └── worlds.json             # canonical world list (id, name, equation, …)
 ├── schema/
-│   └── result.schema.json  # JSON Schema for validating new entries
-├── figures/                # PNG figures from the paper
+│   └── result.schema.json      # JSON Schema for one results entry
+├── model-results/
+│   ├── averaged/summary_per_model.txt
+│   └── per_world/summary.txt   # raw .txt summaries — source of truth
+├── figures/                    # PNG figures from the paper
 └── .github/workflows/
-    └── validate.yml        # CI check for submissions
+    └── validate.yml            # regenerate + schema-validate on PR
 ```
 
 ## Adding figures
 
-Drop the PNG/PDF figures from the paper into `figures/`:
+Drop the PNG figures from the paper into `figures/`:
 
-| File              | Source                                  |
-| ----------------- | --------------------------------------- |
-| `pipeline.png`    | Fig. 1 (benchmark schematic)            |
-| `pareto.png`      | Fig. 2 left panel                       |
-| `passk.png`       | Fig. 2 middle panel                     |
-| `heatmap.png`     | Fig. 4 top panel                        |
-| `rounds.png`      | Fig. 3 (guided vs random)               |
+| File              | Source                        |
+| ----------------- | ----------------------------- |
+| `pipeline.png`    | Fig. 1 (benchmark schematic)  |
+| `pareto.png`      | Fig. 2 left panel             |
+| `passk.png`       | Fig. 2 middle panel           |
+| `rounds.png`      | Fig. 3 (guided vs random)     |
 
-The site degrades gracefully if any are missing — they show a placeholder.
+The site degrades gracefully if any are missing. The per-world heatmap section is rendered live from `data/results.json`, so no figure is needed for it.
 
 ## Adding the paper PDF
 
@@ -58,41 +66,16 @@ Drop the compiled PDF as `paper.pdf` in the root.
 
 ## Submitting results
 
-Contributors fork the repo, append one entry to `data/results.json` matching the shape in `schema/result.schema.json`, and open a PR. The GitHub Action validates the schema before merge.
+The numeric leaderboard is generated from the two .txt files under `model-results/`. To add a model:
 
-A minimal entry looks like:
+1. Run the DiscoverPhysics evaluation harness on the new model.
+2. Append the new model's row(s) to:
+   - `model-results/averaged/summary_per_model.txt` (one row, pooled across worlds and seeds)
+   - `model-results/per_world/summary.txt` (one row per world)
+3. `python build_data.py`
+4. Commit `model-results/...` and the regenerated `data/results.json`, then open a PR.
 
-```json
-{
-  "model": "your-model-id",
-  "model_display": "Your Model",
-  "organization": "Your Org",
-  "type": "open-source",
-  "release_date": "2026-05",
-  "explanation_score": { "mean": 0.0, "se": 0.0 },
-  "normalized_mse": { "mean": 0.0 },
-  "pass_at_k": {
-    "1": { "mean": 0, "se": 0 },
-    "2": { "mean": 0, "se": 0 },
-    "3": { "mean": 0, "se": 0 },
-    "4": { "mean": 0, "se": 0 },
-    "5": { "mean": 0, "se": null }
-  },
-  "per_world_explanation": {
-    "gravity": 0.0, "yukawa": 0.0, "hubble": 0.0,
-    "ether": 0.0, "oscillator": 0.0, "circle": 0.0,
-    "extra_dimensions": 0.0, "fractional": 0.0,
-    "dark_matter": 0.0, "three_species": 0.0, "coulomb": 0.0
-  },
-  "submission": {
-    "submitted_by": "your-github-handle",
-    "submission_date": "2026-05-10",
-    "rounds_budget": 16,
-    "experimentation_mode": "guided",
-    "notes": null
-  }
-}
-```
+`build_data.py` strips provider prefixes (e.g. `together/openai/gpt-oss-120b` → `gpt-oss-120b`) and renames the `coulomb_easy` world to `coulomb` to match `data/worlds.json`. The CI workflow fails if the committed `data/results.json` doesn't match what the script produces, or if any entry violates `schema/result.schema.json`, or if a model entry's per-world keys don't match the world ids in `data/worlds.json`.
 
 ## De-anonymizing for the camera-ready
 
@@ -101,5 +84,5 @@ Author info lives in **one place**: the `<p class="author-line">` block in `inde
 ## Customizing
 
 - **Domain**: to use a custom domain, add a `CNAME` file containing the bare domain (e.g. `discoverphysics.org`) and configure DNS at your registrar (CNAME → `<user>.github.io`). Enforce HTTPS in Pages settings.
-- **Color accent**: `--accent` in `style.css` is the only hot color used. Change it once and the entire site retones.
-- **Adding a new world**: append to `data/worlds.json`. The grid is auto-rendered.
+- **Color accent**: `--accent` in `style.css` is the only hot color used. Change it once and the entire site retones, including the heatmap shading.
+- **Adding a new world**: append to `data/worlds.json`. The grid auto-renders. The world id must also appear in every model's per-world summary in `model-results/per_world/summary.txt`, or `validate.yml` will fail.

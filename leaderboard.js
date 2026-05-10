@@ -196,6 +196,22 @@ const COLOR_RULE   = '#1a3024';   // dim trace
 const COLOR_PAPER  = '#07100c';   // oscilloscope black
 const COLOR_MUTED  = '#6b8c75';   // faded phosphor
 
+// Per-model colors for line traces. Designed to read well on the dark
+// phosphor background: bright, well-separated hues evoking multi-channel
+// oscilloscope traces. Index 0 is the top-ranked model (always amber).
+const MODEL_COLORS = [
+  COLOR_ACCENT,   // amber
+  '#5fdcff',      // Cherenkov cyan
+  '#ff6bd0',      // bright magenta
+  '#6dd96d',      // phosphor lime
+  '#ffd866',      // warm yellow
+  '#b88cff',      // electric lavender
+  '#4ad9c0',      // mint teal
+  '#ff8a65',      // coral
+  '#7da7ff',      // cool blue
+  '#e8e8e8'       // cool white (calibration trace)
+];
+
 function renderFigures() {
   if (!state.data || typeof Plotly === 'undefined') return;
   renderPareto();
@@ -235,7 +251,7 @@ function renderPareto() {
     y: ys,
     text: labelText,
     textposition: 'middle right',
-    textfont: { size: 12, family: PLOT_FONT, color: COLOR_INK },
+    textfont: { size: 15, family: PLOT_FONT, color: COLOR_INK },
     mode: 'markers+text',
     type: 'scatter',
     marker: {
@@ -319,12 +335,12 @@ function renderPassK() {
     name: r.model,
     mode: 'lines+markers',
     line: {
-      width: i === 0 ? 2.5 : 1.4,
-      color: i === 0 ? COLOR_ACCENT : undefined,
+      width: i === 0 ? 2.8 : 1.6,
+      color: MODEL_COLORS[i % MODEL_COLORS.length],
     },
     marker: {
-      size: i === 0 ? 8 : 5,
-      color: i === 0 ? COLOR_ACCENT : undefined,
+      size: i === 0 ? 9 : 6,
+      color: MODEL_COLORS[i % MODEL_COLORS.length],
     },
     type: 'scatter',
     hovertemplate:
@@ -357,7 +373,7 @@ function renderPassK() {
       x: 1.02, y: 1,
       xanchor: 'left', yanchor: 'top',
       bgcolor: 'rgba(0,0,0,0)',
-      font: { family: PLOT_FONT, size: 11 },
+      font: { family: PLOT_FONT, size: 14 },
       itemsizing: 'constant',
     },
     hoverlabel: {

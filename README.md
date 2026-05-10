@@ -74,10 +74,6 @@ The numeric leaderboard is generated from the two .txt files under `model-result
 
 `build_data.py` strips provider prefixes (e.g. `together/openai/gpt-oss-120b` → `gpt-oss-120b`) and renames the `coulomb_easy` world to `coulomb` to match `data/worlds.json`. The CI workflow fails if the committed `data/results.json` doesn't match what the script produces, or if any entry violates `schema/result.schema.json`, or if a model entry's per-world keys don't match the world ids in `data/worlds.json`.
 
-## De-anonymizing for the camera-ready
-
-Author info lives in **one place**: the `<p class="author-line">` block in `index.html`. Replace `Anonymous Authors` with the real author list and you're done.
-
 ## Customizing
 
 - **Domain**: to use a custom domain, add a `CNAME` file containing the bare domain (e.g. `discoverphysics.org`) and configure DNS at your registrar (CNAME → `<user>.github.io`). Enforce HTTPS in Pages settings.

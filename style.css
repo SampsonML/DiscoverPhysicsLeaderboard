@@ -354,14 +354,14 @@ table.leaderboard th[data-sortable]:hover {
 }
 
 table.leaderboard th[data-sortable]::after {
-  content: '\\2195';
+  content: '\2195';
   margin-left: 0.4rem;
   opacity: 0.4;
   font-size: 0.85em;
 }
 
-table.leaderboard th.sorted-desc::after { content: '\\25BC'; opacity: 1; }
-table.leaderboard th.sorted-asc::after { content: '\\25B2'; opacity: 1; }
+table.leaderboard th.sorted-desc::after { content: '\25BC'; opacity: 1; }
+table.leaderboard th.sorted-asc::after { content: '\25B2'; opacity: 1; }
 
 table.leaderboard td {
   padding: 0.75rem 0.9rem;

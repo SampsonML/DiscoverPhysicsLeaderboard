@@ -217,9 +217,9 @@ function renderPareto() {
   const xs = mses.map(m => m > 0 ? m : floor);
   const ys = rows.map(r => r.explanation_score.mean);
 
-  // Only the top-3 models (by Pass@5) get on-plot labels. The rest are
+  // Only the top-2 models (by Pass@5) get on-plot labels. The rest are
   // identifiable via hover.
-  const TOP_LABELS = 3;
+  const TOP_LABELS = 2;
   const labelText = rows.map((r, i) => i < TOP_LABELS ? '  ' + r.model : '');
   const sizes  = rows.map((_, i) => i < TOP_LABELS ? 14 : 10);
   const colors = rows.map((_, i) => i === 0 ? COLOR_ACCENT : COLOR_INK);
@@ -266,6 +266,18 @@ function renderPareto() {
     plot_bgcolor: 'transparent',
     font: { family: PLOT_FONT, size: 12, color: COLOR_INK },
     showlegend: false,
+    annotations: [{
+      text: 'Hover for model names / details',
+      xref: 'paper', yref: 'paper',
+      x: 0.99, y: 0.02,
+      xanchor: 'right', yanchor: 'bottom',
+      showarrow: false,
+      font: {
+        family: PLOT_FONT,
+        size: 11,
+        color: '#6b6b6b'
+      }
+    }],
     hoverlabel: {
       bgcolor: COLOR_INK,
       bordercolor: COLOR_INK,

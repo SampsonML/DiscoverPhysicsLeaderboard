@@ -1,0 +1,385 @@
+{
+  "metadata": {
+    "benchmark_version": "1.0",
+    "last_updated": "2026-05-10",
+    "num_worlds": 11,
+    "num_seeds": 5,
+    "default_rounds_budget": 16,
+    "noise_sigma": 0.05,
+    "worlds": [
+      "gravity",
+      "yukawa",
+      "hubble",
+      "ether",
+      "oscillator",
+      "circle",
+      "extra_dimensions",
+      "fractional",
+      "dark_matter",
+      "three_species",
+      "coulomb"
+    ]
+  },
+  "results": [
+    {
+      "model": "claude-opus-4-7",
+      "model_display": "Claude Opus 4.7",
+      "organization": "Anthropic",
+      "type": "proprietary",
+      "release_date": "2026-05",
+      "explanation_score": { "mean": 0.62, "se": 0.04 },
+      "normalized_mse": { "mean": 0.001 },
+      "pass_at_k": {
+        "1": { "mean": 34.9, "se": 0.3 },
+        "2": { "mean": 42.9, "se": 0.3 },
+        "3": { "mean": 47.1, "se": 0.3 },
+        "4": { "mean": 51.0, "se": 0.2 },
+        "5": { "mean": 54.6, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.94,
+        "yukawa": 0.96,
+        "hubble": 0.90,
+        "ether": 0.76,
+        "oscillator": 0.72,
+        "circle": 0.48,
+        "extra_dimensions": 0.54,
+        "fractional": 0.48,
+        "dark_matter": 0.38,
+        "three_species": 0.40,
+        "coulomb": 0.28
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    },
+    {
+      "model": "gpt-5.5",
+      "model_display": "GPT-5.5",
+      "organization": "OpenAI",
+      "type": "proprietary",
+      "release_date": "2026-02",
+      "explanation_score": { "mean": 0.59, "se": 0.04 },
+      "normalized_mse": { "mean": 0.00003 },
+      "pass_at_k": {
+        "1": { "mean": 27.2, "se": 0.2 },
+        "2": { "mean": 30.7, "se": 0.2 },
+        "3": { "mean": 32.8, "se": 0.1 },
+        "4": { "mean": 34.6, "se": 0.1 },
+        "5": { "mean": 36.4, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.96,
+        "yukawa": 0.90,
+        "hubble": 0.64,
+        "ether": 0.76,
+        "oscillator": 0.90,
+        "circle": 0.54,
+        "extra_dimensions": 0.36,
+        "fractional": 0.48,
+        "dark_matter": 0.22,
+        "three_species": 0.40,
+        "coulomb": 0.26
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    },
+    {
+      "model": "qwen-3.5-397b-a17b",
+      "model_display": "Qwen 3.5",
+      "organization": "Alibaba",
+      "type": "open-source",
+      "release_date": "2026-02",
+      "explanation_score": { "mean": 0.37, "se": 0.03 },
+      "normalized_mse": { "mean": 0.01 },
+      "pass_at_k": {
+        "1": { "mean": 5.6, "se": 0.2 },
+        "2": { "mean": 8.3, "se": 0.1 },
+        "3": { "mean": 9.1, "se": null },
+        "4": { "mean": 9.1, "se": null },
+        "5": { "mean": 9.1, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.76,
+        "yukawa": 0.40,
+        "hubble": 0.17,
+        "ether": 0.35,
+        "oscillator": 0.26,
+        "circle": 0.46,
+        "extra_dimensions": 0.24,
+        "fractional": 0.47,
+        "dark_matter": 0.22,
+        "three_species": 0.30,
+        "coulomb": 0.30
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "model_display": "Claude Sonnet 4.6",
+      "organization": "Anthropic",
+      "type": "proprietary",
+      "release_date": "2025-11",
+      "explanation_score": { "mean": 0.32, "se": 0.02 },
+      "normalized_mse": { "mean": 0.20 },
+      "pass_at_k": {
+        "1": { "mean": 1.8, "se": 0.1 },
+        "2": { "mean": 3.4, "se": 0.2 },
+        "3": { "mean": 4.5, "se": 0.02 },
+        "4": { "mean": 7.3, "se": 0.01 },
+        "5": { "mean": 9.1, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.50,
+        "yukawa": 0.28,
+        "hubble": 0.24,
+        "ether": 0.38,
+        "oscillator": 0.38,
+        "circle": 0.36,
+        "extra_dimensions": 0.16,
+        "fractional": 0.34,
+        "dark_matter": 0.22,
+        "three_species": 0.34,
+        "coulomb": 0.28
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    },
+    {
+      "model": "gpt-5.4",
+      "model_display": "GPT-5.4",
+      "organization": "OpenAI",
+      "type": "proprietary",
+      "release_date": "2025-11",
+      "explanation_score": { "mean": 0.31, "se": 0.03 },
+      "normalized_mse": { "mean": 1.7 },
+      "pass_at_k": {
+        "1": { "mean": 1.8, "se": 0.1 },
+        "2": { "mean": 3.4, "se": 0.1 },
+        "3": { "mean": 5.5, "se": 0.1 },
+        "4": { "mean": 7.3, "se": 0.1 },
+        "5": { "mean": 9.1, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.68,
+        "yukawa": 0.42,
+        "hubble": 0.22,
+        "ether": 0.24,
+        "oscillator": 0.10,
+        "circle": 0.30,
+        "extra_dimensions": 0.20,
+        "fractional": 0.48,
+        "dark_matter": 0.14,
+        "three_species": 0.38,
+        "coulomb": 0.22
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    },
+    {
+      "model": "gpt-oss-120b",
+      "model_display": "GPT-oss 120B",
+      "organization": "OpenAI",
+      "type": "open-source",
+      "release_date": "2025-08",
+      "explanation_score": { "mean": 0.28, "se": 0.03 },
+      "normalized_mse": { "mean": 0.4 },
+      "pass_at_k": {
+        "1": { "mean": 5.2, "se": 0.2 },
+        "2": { "mean": 9.5, "se": 0.2 },
+        "3": { "mean": 13.6, "se": 0.2 },
+        "4": { "mean": 16.3, "se": null },
+        "5": { "mean": 18.2, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.62,
+        "yukawa": 0.38,
+        "hubble": 0.18,
+        "ether": 0.20,
+        "oscillator": 0.26,
+        "circle": 0.12,
+        "extra_dimensions": 0.18,
+        "fractional": 0.33,
+        "dark_matter": 0.23,
+        "three_species": 0.14,
+        "coulomb": 0.55
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    },
+    {
+      "model": "qwen-3-235b-a22b",
+      "model_display": "Qwen 3 235B",
+      "organization": "Alibaba",
+      "type": "open-source",
+      "release_date": "2025-08",
+      "explanation_score": { "mean": 0.27, "se": 0.03 },
+      "normalized_mse": { "mean": 0.07 },
+      "pass_at_k": {
+        "1": { "mean": 1.9, "se": 0.1 },
+        "2": { "mean": 3.6, "se": 0.2 },
+        "3": { "mean": 5.4, "se": 0.1 },
+        "4": { "mean": 7.3, "se": 0.1 },
+        "5": { "mean": 9.1, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.50,
+        "yukawa": 0.46,
+        "hubble": 0.12,
+        "ether": 0.12,
+        "oscillator": 0.20,
+        "circle": 0.34,
+        "extra_dimensions": 0.20,
+        "fractional": 0.34,
+        "dark_matter": 0.18,
+        "three_species": 0.08,
+        "coulomb": 0.23
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    },
+    {
+      "model": "deepseek-r1",
+      "model_display": "DeepSeek-R1",
+      "organization": "DeepSeek",
+      "type": "open-source",
+      "release_date": "2025-08",
+      "explanation_score": { "mean": 0.26, "se": 0.03 },
+      "normalized_mse": { "mean": 0.1 },
+      "pass_at_k": {
+        "1": { "mean": 1.9, "se": 0.1 },
+        "2": { "mean": 3.6, "se": 0.1 },
+        "3": { "mean": 5.4, "se": 0.1 },
+        "4": { "mean": 7.3, "se": 0.1 },
+        "5": { "mean": 9.1, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.52,
+        "yukawa": 0.32,
+        "hubble": 0.30,
+        "ether": 0.18,
+        "oscillator": 0.16,
+        "circle": 0.40,
+        "extra_dimensions": 0.15,
+        "fractional": 0.38,
+        "dark_matter": 0.12,
+        "three_species": 0.16,
+        "coulomb": 0.24
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "model_display": "Claude Haiku 4.5",
+      "organization": "Anthropic",
+      "type": "proprietary",
+      "release_date": "2025-11",
+      "explanation_score": { "mean": 0.26, "se": 0.02 },
+      "normalized_mse": { "mean": 1.0 },
+      "pass_at_k": {
+        "1": { "mean": 0, "se": null },
+        "2": { "mean": 0, "se": null },
+        "3": { "mean": 0, "se": null },
+        "4": { "mean": 0, "se": null },
+        "5": { "mean": 0, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.36,
+        "yukawa": 0.34,
+        "hubble": 0.12,
+        "ether": 0.22,
+        "oscillator": 0.20,
+        "circle": 0.20,
+        "extra_dimensions": 0.16,
+        "fractional": 0.46,
+        "dark_matter": 0.16,
+        "three_species": 0.16,
+        "coulomb": 0.44
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    },
+    {
+      "model": "gpt-oss-20b",
+      "model_display": "GPT-oss 20B",
+      "organization": "OpenAI",
+      "type": "open-source",
+      "release_date": "2025-08",
+      "explanation_score": { "mean": 0.16, "se": 0.03 },
+      "normalized_mse": { "mean": 0.04 },
+      "pass_at_k": {
+        "1": { "mean": 0, "se": null },
+        "2": { "mean": 0, "se": null },
+        "3": { "mean": 0, "se": null },
+        "4": { "mean": 0, "se": null },
+        "5": { "mean": 0, "se": null }
+      },
+      "per_world_explanation": {
+        "gravity": 0.40,
+        "yukawa": 0.04,
+        "hubble": 0.12,
+        "ether": 0.17,
+        "oscillator": 0.06,
+        "circle": 0.08,
+        "extra_dimensions": 0.10,
+        "fractional": 0.43,
+        "dark_matter": 0.14,
+        "three_species": 0.10,
+        "coulomb": 0.30
+      },
+      "submission": {
+        "submitted_by": "authors",
+        "submission_date": "2026-05-10",
+        "rounds_budget": 16,
+        "experimentation_mode": "guided",
+        "notes": null
+      }
+    }
+  ]
+}

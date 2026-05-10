@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiscoverPhysics &mdash; Benchmarking LLMs for scientific discovery</title>
+  <meta name="description" content="An interactive benchmark that asks LLM agents to discover the laws of motion of simulated worlds whose physics deliberately deviates from our own.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DiscoverPhysics">
+  <meta property="og:description" content="Benchmarking LLMs for out-of-the-box scientific thinking.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <p class="eyebrow">A benchmark · 11 worlds · 10 frontier models</p>
+  <h1>Discover<em>Physics</em></h1>
+  <p class="tagline">
+    Benchmarking large language models for out-of-the-box scientific thinking.
+  </p>
+  <p class="author-line">
+    Anonymous Authors &nbsp;·&nbsp; Submitted to NeurIPS 2026
+  </p>
+  <nav class="primary">
+    <a href="#abstract">Abstract</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#figures">Figures</a>
+    <a href="#worlds">Worlds</a>
+    <a href="#submit">Submit</a>
+    <a href="paper.pdf">Paper&nbsp;&#8599;</a>
+    <a href="https://github.com/your-org/discoverphysics">Code&nbsp;&#8599;</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ABSTRACT -->
+  <section id="abstract">
+    <div class="section-head">
+      <span class="section-num">§ 01</span>
+      <h2>Abstract</h2>
+      <span class="section-meta">3 min read</span>
+    </div>
+
+    <div class="abstract">
+      <figure class="pipeline-fig">
+        <img src="figures/pipeline.png" alt="Schematic of the DiscoverPhysics benchmarking pipeline" onerror="this.style.display='none'">
+        <figcaption>Fig. 1 &middot; The benchmark loop</figcaption>
+      </figure>
+
+      <div class="abstract-prose">
+        <p>
+          Frontier LLMs perform strongly across physics evaluations, but it is hard to disentangle
+          genuine reasoning from recall of established science. <strong>DiscoverPhysics</strong> asks an
+          LLM agent to discover the laws of motion of a simulated world whose physics deliberately
+          deviates from our own.
+        </p>
+        <p>
+          We construct eleven worlds governed by, among others, screened and fractional-power gravity,
+          multi-species couplings, hidden dark-matter-like particles, and time-varying interactions.
+          Each world is generated on demand by an N-body simulator. The agent proposes several rounds
+          of experiments, observes raw trajectory data, and submits both a natural-language
+          explanation and a Python implementation of the inferred law.
+        </p>
+        <p>
+          Across ten frontier models, the strongest agents pass only about half of the worlds and
+          consistently fail on those where latent structure must be uncovered. Predictive accuracy
+          and conceptual understanding decouple: the model with the lowest trajectory MSE is not
+          the one with the highest explanation score.
+        </p>
+
+        <div class="key-stats">
+          <div class="stat">
+            <span class="num">11</span>
+            <span class="label">Physical worlds</span>
+          </div>
+          <div class="stat">
+            <span class="num">10</span>
+            <span class="label">Models evaluated</span>
+          </div>
+          <div class="stat">
+            <span class="num">~55<span style="font-size:0.6em">%</span></span>
+            <span class="label">Best pass@5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERBOARD -->
+  <section id="leaderboard">
+    <div class="section-head">
+      <span class="section-num">§ 02</span>
+      <h2>Leaderboard</h2>
+      <span class="section-meta" id="meta-stamp">loading…</span>
+    </div>
+
+    <div class="controls">
+      <label>Filter
+        <span class="filter-group">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="proprietary">Proprietary</button>
+          <button class="filter-pill" data-filter="open-source">Open</button>
+        </span>
+      </label>
+      <span style="margin-left:auto; color:var(--muted); font-size:0.75rem;">
+        Click any column header to sort.
+      </span>
+    </div>
+
+    <div id="results-table" class="table-wrap">
+      <div class="loading">Loading results…</div>
+    </div>
+
+    <p style="font-size:0.85rem; color:var(--muted); margin-top:1rem; line-height:1.5; max-width:48rem;">
+      A world is considered a pass if per-trajectory normalized MSE is below 0.1
+      and the explanation score is &ge; 0.75. Pass@k is computed by sampling k seeds
+      per world and counting worlds with at least one passing attempt, averaged over
+      1,000 resamples. Standard errors are bootstrapped from 5 seeds.
+    </p>
+  </section>
+
+  <!-- FIGURES -->
+  <section id="figures">
+    <div class="section-head">
+      <span class="section-num">§ 03</span>
+      <h2>Results at a glance</h2>
+    </div>
+
+    <div class="figures-grid">
+      <figure>
+        <img src="figures/pareto.png" alt="Pareto plot of explanation score vs MSE" onerror="this.alt='[figure pending]'; this.style.background='#efebe0'; this.style.minHeight='280px'">
+        <figcaption>
+          <strong>Fig. 2a · Pareto frontier</strong>
+          Explanation score against normalized MSE. The strongest models reach the upper-left
+          corner; some achieve low MSE without high explanation scores, indicating fitting
+          without conceptual understanding.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="figures/passk.png" alt="Pass@k as a function of k" onerror="this.alt='[figure pending]'; this.style.background='#efebe0'; this.style.minHeight='280px'">
+        <figcaption>
+          <strong>Fig. 2b · Pass@k</strong>
+          Expected fraction of worlds passed from k independent attempts. All models except
+          gpt-oss-20b show pass@5 substantially larger than pass@1.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="figures/heatmap.png" alt="Per-world explanation scores by model" onerror="this.alt='[figure pending]'; this.style.background='#efebe0'; this.style.minHeight='280px'">
+        <figcaption>
+          <strong>Fig. 4 · Per-world heatmap</strong>
+          Mean explanation score per model and world. Worlds are ordered from easiest to
+          hardest based on Claude Opus 4.7's performance.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="figures/rounds.png" alt="Performance vs experimental rounds" onerror="this.alt='[figure pending]'; this.style.background='#efebe0'; this.style.minHeight='280px'">
+        <figcaption>
+          <strong>Fig. 3 · Guided vs random</strong>
+          Pass rate, explanation score, and MSE as a function of round budget for the two
+          strongest models, with cross-hatched bars showing randomized experimentation.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- WORLDS -->
+  <section id="worlds">
+    <div class="section-head">
+      <span class="section-num">§ 04</span>
+      <h2>The eleven worlds</h2>
+      <span class="section-meta">Appendix B</span>
+    </div>
+
+    <p style="max-width:42rem; font-size:1rem; margin-bottom:2rem; color:var(--muted); font-family:var(--serif); font-style:italic; font-size:1.1rem;">
+      Each world is defined by a hidden force law. Agents see only the simulator output;
+      world names and equations below are revealed in the paper, never to the agent.
+    </p>
+
+    <div id="worlds-grid" class="worlds-grid">
+      <div class="loading" style="grid-column: 1 / -1;">Loading worlds…</div>
+    </div>
+  </section>
+
+  <!-- SUBMIT -->
+  <section id="submit" style="padding-bottom:0; border-bottom:none;">
+    <div class="submit-block">
+      <h2>Submit a model</h2>
+      <p>
+        We're opening DiscoverPhysics to community submissions. To add your model to the
+        leaderboard, run our evaluation harness, generate a JSON entry matching the
+        <code>result.schema.json</code> shape, and open a pull request adding it under
+        <code>data/results.json</code>. A CI check validates the schema; a maintainer reviews
+        and merges.
+      </p>
+      <p>
+        If you'd like to discuss a non-standard evaluation setting (different round budgets,
+        new world, custom prompt), open an issue first.
+      </p>
+      <a class="btn" href="https://github.com/your-org/discoverphysics#submitting">Submission guide</a>
+      <a class="btn btn-ghost" href="schema/result.schema.json">View schema</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span>DiscoverPhysics &middot; <a href="https://github.com/your-org/discoverphysics">github</a> &middot; <a href="paper.pdf">paper</a></span>
+  <span>Site source: MIT &middot; Benchmark code: MIT</span>
+</footer>
+
+<script src="leaderboard.js"></script>
+</body>
+</html>

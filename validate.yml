@@ -1,0 +1,59 @@
+name: Validate submission
+
+on:
+  pull_request:
+    paths:
+      - 'data/results.json'
+      - 'data/worlds.json'
+      - 'schema/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install jsonschema
+        run: pip install jsonschema
+
+      - name: Validate every entry in results.json
+        run: |
+          python <<'PY'
+          import json, sys
+          from jsonschema import Draft202012Validator
+
+          schema = json.load(open('schema/result.schema.json'))
+          data = json.load(open('data/results.json'))
+          worlds = {w['id'] for w in json.load(open('data/worlds.json'))['worlds']}
+
+          v = Draft202012Validator(schema)
+          errors = []
+          seen = set()
+
+          for i, entry in enumerate(data['results']):
+              for e in v.iter_errors(entry):
+                  errors.append(f"results[{i}] ({entry.get('model','?')}): {e.message}")
+
+              # custom checks
+              mid = entry.get('model')
+              if mid in seen:
+                  errors.append(f"results[{i}]: duplicate model id '{mid}'")
+              seen.add(mid)
+
+              pw = set(entry.get('per_world_explanation', {}).keys())
+              missing = worlds - pw
+              extra = pw - worlds
+              if missing:
+                  errors.append(f"results[{i}] ({mid}): missing worlds {sorted(missing)}")
+              if extra:
+                  errors.append(f"results[{i}] ({mid}): unknown worlds {sorted(extra)}")
+
+          if errors:
+              print('\n'.join(errors))
+              sys.exit(1)
+          print(f'OK: {len(data["results"])} entries validated.')
+          PY

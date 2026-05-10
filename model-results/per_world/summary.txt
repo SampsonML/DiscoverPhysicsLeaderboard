@@ -1,0 +1,118 @@
+Benchmark summary  (new_production_16)
+========================================================================================================================
+model                                              world             n        expl_score ± SE        geom_pos_err +/− SE
+------------------------------------------------------------------------------------------------------------------------
+claude-opus-4-7                                    circle            5          0.480 ± 0.033        0.000 +0.000/−0.000
+claude-opus-4-7                                    coulomb_easy      5          0.280 ± 0.018        0.000 +0.000/−0.000
+claude-opus-4-7                                    dark_matter       5          0.380 ± 0.051    251.471 +48.913/−40.948
+claude-opus-4-7                                    ether             5          0.760 ± 0.067        3.726 +2.935/−1.642
+claude-opus-4-7                                    extra_dimensions   5          0.540 ± 0.059        0.002 +0.004/−0.002
+claude-opus-4-7                                    fractional        5          0.480 ± 0.018        0.000 +0.001/−0.000
+claude-opus-4-7                                    gravity           5          0.940 ± 0.053        0.006 +0.023/−0.005
+claude-opus-4-7                                    hubble            5          0.900 ± 0.040        0.005 +0.009/−0.003
+claude-opus-4-7                                    oscillator        5          0.720 ± 0.082        0.012 +0.081/−0.010
+claude-opus-4-7                                    three_species     5          0.400 ± 0.000        4.637 +0.225/−0.214
+claude-opus-4-7                                    yukawa            5          0.960 ± 0.022        0.001 +0.013/−0.001
+claude-sonnet-4-6                                  circle            5          0.360 ± 0.035        0.164 +1.458/−0.147
+claude-sonnet-4-6                                  coulomb_easy      5          0.280 ± 0.094        0.000 +0.018/−0.000
+claude-sonnet-4-6                                  dark_matter       5          0.220 ± 0.033 222877.285 +5471730.432/−214154.246
+claude-sonnet-4-6                                  ether             5          0.380 ± 0.018        8.495 +4.555/−2.965
+claude-sonnet-4-6                                  extra_dimensions   5          0.160 ± 0.036       2.978 +25.822/−2.670
+claude-sonnet-4-6                                  fractional        5          0.340 ± 0.045        0.068 +0.196/−0.051
+claude-sonnet-4-6                                  gravity           5          0.500 ± 0.133        0.689 +2.232/−0.527
+claude-sonnet-4-6                                  hubble            5          0.240 ± 0.045    151.837 +24.145/−20.832
+claude-sonnet-4-6                                  oscillator        5          0.380 ± 0.106        0.664 +1.507/−0.461
+claude-sonnet-4-6                                  three_species     5          0.340 ± 0.022      15.036 +16.737/−7.920
+claude-sonnet-4-6                                  yukawa            5          0.280 ± 0.018       9.434 +35.943/−7.473
+claude-haiku-4-5                                   circle            5          0.200 ± 0.056        1.390 +4.541/−1.064
+claude-haiku-4-5                                   coulomb_easy      5          0.440 ± 0.061        0.996 +5.388/−0.841
+claude-haiku-4-5                                   dark_matter       5          0.160 ± 0.035    113.180 +44.906/−32.150
+claude-haiku-4-5                                   ether             5          0.220 ± 0.052 15499.961 +593078.079/−15105.191
+claude-haiku-4-5                                   extra_dimensions   5          0.160 ± 0.036    15.740 +123.653/−13.963
+claude-haiku-4-5                                   fractional        5          0.460 ± 0.022        0.167 +0.944/−0.142
+claude-haiku-4-5                                   gravity           5          0.360 ± 0.036       5.479 +14.087/−3.945
+claude-haiku-4-5                                   hubble            5          0.120 ± 0.065    152.391 +46.698/−35.744
+claude-haiku-4-5                                   oscillator        5          0.200 ± 0.048        0.739 +1.544/−0.500
+claude-haiku-4-5                                   three_species     5          0.160 ± 0.022    53.523 +311.037/−45.665
+claude-haiku-4-5                                   yukawa            5          0.340 ± 0.053       4.494 +80.932/−4.258
+azure/gpt-5.5                                      circle            5          0.540 ± 0.053        0.000 +0.000/−0.000
+azure/gpt-5.5                                      coulomb_easy      5          0.260 ± 0.022        0.000 +0.000/−0.000
+azure/gpt-5.5                                      dark_matter       5          0.220 ± 0.018     45.727 +42.691/−22.078
+azure/gpt-5.5                                      ether             5          0.760 ± 0.035        1.046 +0.806/−0.455
+azure/gpt-5.5                                      extra_dimensions   5          0.360 ± 0.060        0.001 +0.001/−0.000
+azure/gpt-5.5                                      fractional        5          0.480 ± 0.018        0.000 +0.000/−0.000
+azure/gpt-5.5                                      gravity           5          0.960 ± 0.022        0.000 +0.000/−0.000
+azure/gpt-5.5                                      hubble            5          0.640 ± 0.061        0.000 +0.001/−0.000
+azure/gpt-5.5                                      oscillator        5          0.900 ± 0.028        0.000 +0.000/−0.000
+azure/gpt-5.5                                      three_species     5          0.400 ± 0.000        6.344 +1.734/−1.362
+azure/gpt-5.5                                      yukawa            5          0.900 ± 0.088        0.000 +0.000/−0.000
+azure/gpt-5.4                                      circle            5          0.300 ± 0.057        3.333 +5.005/−2.000
+azure/gpt-5.4                                      coulomb_easy      5          0.220 ± 0.018        0.547 +0.408/−0.234
+azure/gpt-5.4                                      dark_matter       5          0.140 ± 0.022    344.941 +41.243/−36.838
+azure/gpt-5.4                                      ether             5          0.240 ± 0.036 249112.856 +126612071.163/−248623.682
+azure/gpt-5.4                                      extra_dimensions   5          0.200 ± 0.028        0.154 +0.512/−0.119
+azure/gpt-5.4                                      fractional        5          0.480 ± 0.018        0.031 +0.200/−0.027
+azure/gpt-5.4                                      gravity           5          0.680 ± 0.129        0.153 +0.477/−0.116
+azure/gpt-5.4                                      hubble            5          0.220 ± 0.018 36098752096.787 +640922824960257.125/−36096719018.138
+azure/gpt-5.4                                      oscillator        5          0.100 ± 0.000        2.651 +4.958/−1.727
+azure/gpt-5.4                                      three_species     5          0.380 ± 0.018        8.250 +0.331/−0.318
+azure/gpt-5.4                                      yukawa            5          0.420 ± 0.018        0.058 +0.223/−0.046
+together/openai/gpt-oss-120b                       circle            5          0.120 ± 0.043        1.407 +0.832/−0.523
+together/openai/gpt-oss-120b                       coulomb_easy      4          0.550 ± 0.102        0.204 +0.178/−0.095
+together/openai/gpt-oss-120b                       dark_matter       4          0.225 ± 0.064 2654.129 +8154.611/−2002.397
+together/openai/gpt-oss-120b                       ether             5          0.200 ± 0.068 20379.128 +6310836.486/−20313.531
+together/openai/gpt-oss-120b                       extra_dimensions   5          0.180 ± 0.018    12.808 +307.898/−12.297
+together/openai/gpt-oss-120b                       fractional        4          0.325 ± 0.094        0.007 +0.026/−0.006
+together/openai/gpt-oss-120b                       gravity           5          0.620 ± 0.086        0.002 +0.015/−0.001
+together/openai/gpt-oss-120b                       hubble            5          0.180 ± 0.033 45135.599 +4715410.538/−44707.660
+together/openai/gpt-oss-120b                       oscillator        5          0.260 ± 0.072        0.412 +0.836/−0.276
+together/openai/gpt-oss-120b                       three_species     5          0.140 ± 0.060        6.412 +0.069/−0.068
+together/openai/gpt-oss-120b                       yukawa            4          0.375 ± 0.054        0.032 +0.051/−0.020
+together/openai/gpt-oss-20b                        circle            5          0.080 ± 0.070        2.126 +4.014/−1.390
+together/openai/gpt-oss-20b                        coulomb_easy      4          0.300 ± 0.061        0.000 +0.000/−0.000
+together/openai/gpt-oss-20b                        dark_matter       5          0.140 ± 0.059 932.034 +1099.334/−504.397
+together/openai/gpt-oss-20b                        ether             4          0.175 ± 0.065    120.593 +27.059/−22.100
+together/openai/gpt-oss-20b                        extra_dimensions   4          0.100 ± 0.050        3.368 +2.553/−1.452
+together/openai/gpt-oss-20b                        fractional        3          0.433 ± 0.054        0.000 +0.015/−0.000
+together/openai/gpt-oss-20b                        gravity           4          0.400 ± 0.136        1.476 +0.177/−0.158
+together/openai/gpt-oss-20b                        hubble            5          0.120 ± 0.066  591.777 +831.495/−345.724
+together/openai/gpt-oss-20b                        oscillator        5          0.060 ± 0.035        0.768 +4.569/−0.658
+together/openai/gpt-oss-20b                        three_species     5          0.100 ± 0.056       10.990 +6.106/−3.925
+together/openai/gpt-oss-20b                        yukawa            5          0.040 ± 0.022        0.060 +0.071/−0.032
+together/deepseek-ai/DeepSeek-R1                   circle            5          0.400 ± 0.046        0.161 +1.585/−0.146
+together/deepseek-ai/DeepSeek-R1                   coulomb_easy      5          0.240 ± 0.022        0.004 +0.011/−0.003
+together/deepseek-ai/DeepSeek-R1                   dark_matter       5          0.120 ± 0.018    237.816 +46.378/−38.810
+together/deepseek-ai/DeepSeek-R1                   ether             5          0.180 ± 0.018                    241.646
+together/deepseek-ai/DeepSeek-R1                   extra_dimensions   5          0.150 ± 0.043        0.729 +0.548/−0.313
+together/deepseek-ai/DeepSeek-R1                   fractional        5          0.380 ± 0.018        0.205 +1.149/−0.174
+together/deepseek-ai/DeepSeek-R1                   gravity           5          0.520 ± 0.123       0.790 +13.233/−0.745
+together/deepseek-ai/DeepSeek-R1                   hubble            5          0.300 ± 0.109       7.108 +40.799/−6.053
+together/deepseek-ai/DeepSeek-R1                   oscillator        5          0.160 ± 0.054       3.438 +15.407/−2.811
+together/deepseek-ai/DeepSeek-R1                   three_species     5          0.160 ± 0.045       11.837 +6.890/−4.355
+together/deepseek-ai/DeepSeek-R1                   yukawa            5          0.320 ± 0.043        0.611 +1.053/−0.387
+together/Qwen/Qwen3.5-397B-A17B                    circle            5          0.460 ± 0.036        4.470 +9.609/−3.051
+together/Qwen/Qwen3.5-397B-A17B                    coulomb_easy      5          0.300 ± 0.068        0.001 +0.056/−0.001
+together/Qwen/Qwen3.5-397B-A17B                    dark_matter       4          0.225 ± 0.064    347.500 +70.611/−58.686
+together/Qwen/Qwen3.5-397B-A17B                    ether             2          0.350 ± 0.035    100.248 +36.728/−26.880
+together/Qwen/Qwen3.5-397B-A17B                    extra_dimensions   5          0.240 ± 0.022        0.003 +0.000/−0.000
+together/Qwen/Qwen3.5-397B-A17B                    fractional        3          0.467 ± 0.027        0.001 +0.001/−0.001
+together/Qwen/Qwen3.5-397B-A17B                    gravity           5          0.760 ± 0.066        0.000 +0.000/−0.000
+together/Qwen/Qwen3.5-397B-A17B                    hubble            3          0.167 ± 0.054                   1227.652
+together/Qwen/Qwen3.5-397B-A17B                    oscillator        5          0.260 ± 0.060        0.639 +0.964/−0.384
+together/Qwen/Qwen3.5-397B-A17B                    three_species     1                  0.300                      5.082
+together/Qwen/Qwen3.5-397B-A17B                    yukawa            1                  0.400                      0.005
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   circle            5          0.340 ± 0.072        4.871 +7.167/−2.900
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   coulomb_easy      3          0.233 ± 0.071        0.000 +0.003/−0.000
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   dark_matter       5          0.180 ± 0.033  519.421 +259.560/−173.073
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   ether             5          0.120 ± 0.018    169.688 +19.881/−17.796
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   extra_dimensions   3          0.200 ± 0.047       4.059 +93.789/−3.891
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   fractional        5          0.340 ± 0.053        0.001 +0.014/−0.001
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   gravity           5          0.500 ± 0.135        0.174 +4.788/−0.168
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   hubble            4          0.125 ± 0.021    314.527 +78.024/−62.516
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   oscillator        4          0.200 ± 0.061        1.509 +1.137/−0.649
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   three_species     5          0.080 ± 0.033        6.824 +0.312/−0.298
+together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   yukawa            5          0.460 ± 0.100        0.023 +0.137/−0.020
+------------------------------------------------------------------------------------------------------------------------
+expl_score: explanation judge score in [0, 1], higher is better. Arithmetic mean.
+geom_pos_err: geometric mean of trajectory mean_pos_error across seeds (values < 1e-14 dropped); lower is better.
+Format: arithmetic columns are `mean ± SE`; geometric-mean columns are `mean +up/−down`, where up = m·(exp(SE_log)−1) and down = m·(1−exp(−SE_log)) with SE_log estimated from 5000 log-space bootstrap resamples (seed=0). The asymmetry keeps the lower bound > 0. n=1 → no SE. 'n/a' = no successful runs.

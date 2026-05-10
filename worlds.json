@@ -1,0 +1,81 @@
+{
+  "worlds": [
+    {
+      "id": "gravity",
+      "name": "Gravity",
+      "tagline": "Logarithmic potential in 2D",
+      "description": "1/r attractive force in a 2D world. The Green's function of the 2D Laplacian.",
+      "equation": "F \\propto p_1 p_2 / r"
+    },
+    {
+      "id": "yukawa",
+      "name": "Yukawa",
+      "tagline": "Screened gravity",
+      "description": "Short-range exponentially suppressed force with screening length \u03bb.",
+      "equation": "F \\propto e^{-r/\\lambda} / r"
+    },
+    {
+      "id": "hubble",
+      "name": "Hubble flow",
+      "tagline": "Central law plus expansion",
+      "description": "Central log potential plus a position-dependent radial Hubble flow H(r).",
+      "equation": "a = -A/r + H \\cdot r"
+    },
+    {
+      "id": "ether",
+      "name": "Ether",
+      "tagline": "Preferred direction in space",
+      "description": "Central law plus a global preferred-direction drift, like a luminiferous ether.",
+      "equation": "F = F_{central} + \\alpha \\hat{y}"
+    },
+    {
+      "id": "oscillator",
+      "name": "Oscillator",
+      "tagline": "Time-varying coupling",
+      "description": "Sinusoidally varying coupling that periodically reverses sign.",
+      "equation": "G(t) = G_0 \\cos(\\omega t + \\phi)"
+    },
+    {
+      "id": "circle",
+      "name": "Circle",
+      "tagline": "Fractional Laplacian, ring of particles",
+      "description": "Fractional Laplacian with 1 center + 10 ring particles, all sourcing the field.",
+      "equation": "-(-\\nabla^2)^\\alpha"
+    },
+    {
+      "id": "extra_dimensions",
+      "name": "Extra dimensions",
+      "tagline": "Crossover from 1/r to 1/r\u00b2",
+      "description": "1/r to 1/r\u00b2 transition (2d+1 dimensions) with Kaluza-Klein image sums.",
+      "equation": "F: 1/r \\to 1/r^2"
+    },
+    {
+      "id": "fractional",
+      "name": "Fractional",
+      "tagline": "Non-local interaction, 2 particles",
+      "description": "Fractional Laplacian acting on a two-particle system.",
+      "equation": "-(-\\nabla^2)^\\alpha"
+    },
+    {
+      "id": "dark_matter",
+      "name": "Dark matter",
+      "tagline": "Hidden mass sources",
+      "description": "20 visible + 10 hidden dark sources. The agent sees only the 25 visible particles.",
+      "equation": "F = F_{visible} + F_{hidden}"
+    },
+    {
+      "id": "three_species",
+      "name": "Three species",
+      "tagline": "Multi-species coupling",
+      "description": "30 background particles in three hidden species (one repulsive) plus 5 neutral probes.",
+      "equation": "F_{ij} \\propto q_i^\\top M q_j / r"
+    },
+    {
+      "id": "coulomb",
+      "name": "Coulomb",
+      "tagline": "Inverse-square attraction",
+      "description": "1/r\u00b2 attractive force. Two-particle setup with both p\u2081 and p\u2082 acting as charges.",
+      "equation": "F \\propto p_1 p_2 / r^2"
+    }
+  ]
+}

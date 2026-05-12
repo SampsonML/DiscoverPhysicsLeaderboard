@@ -112,6 +112,28 @@ together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   hubble            4          
 together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   oscillator        4          0.200 ± 0.061        1.509 +1.137/−0.649
 together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   three_species     5          0.080 ± 0.033        6.824 +0.312/−0.298
 together/Qwen/Qwen3-235B-A22B-Instruct-2507-tput   yukawa            5          0.460 ± 0.100        0.023 +0.137/−0.020
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   circle            3          0.067 ± 0.027                     11.101
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   coulomb_easy      5          0.100 ± 0.000      13.453 +27.336/−9.016
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   dark_matter       3          0.100 ± 0.000 2936.134 +26283.085/−2641.093
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   ether             4          0.075 ± 0.021    179.676 +17.813/−16.207
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   extra_dimensions   5          0.000 ± 0.000        3.492 +0.836/−0.675
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   fractional        5          0.080 ± 0.033        4.052 +7.480/−2.628
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   gravity           5          0.140 ± 0.084        9.612 +5.271/−3.404
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   hubble            4          0.075 ± 0.021                    148.991
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   oscillator        5          0.080 ± 0.033    20.150 +451.096/−19.288
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   three_species     2          0.050 ± 0.035                        n/a
+together/meta-llama/Llama-3.3-70B-Instruct-Turbo   yukawa            5          0.140 ± 0.067      14.291 +10.799/−6.151
+together/moonshotai/Kimi-K2.5                      circle            5          0.340 ± 0.022        1.125 +1.343/−0.612
+together/moonshotai/Kimi-K2.5                      coulomb_easy      4          0.225 ± 0.021        0.001 +0.018/−0.001
+together/moonshotai/Kimi-K2.5                      dark_matter       4          0.275 ± 0.041                     50.869
+together/moonshotai/Kimi-K2.5                      ether             5          0.240 ± 0.053     42.161 +53.481/−23.576
+together/moonshotai/Kimi-K2.5                      extra_dimensions   5          0.220 ± 0.018        0.030 +0.042/−0.018
+together/moonshotai/Kimi-K2.5                      fractional        5          0.340 ± 0.045        0.020 +0.044/−0.014
+together/moonshotai/Kimi-K2.5                      gravity           5          0.760 ± 0.092        0.010 +0.037/−0.008
+together/moonshotai/Kimi-K2.5                      hubble            5          0.320 ± 0.090 1247795772079.329 +87619909282581512192.000/−1247795754309.460
+together/moonshotai/Kimi-K2.5                      oscillator        5          0.160 ± 0.022        1.303 +4.000/−0.983
+together/moonshotai/Kimi-K2.5                      three_species     5          0.240 ± 0.046        9.256 +3.331/−2.449
+together/moonshotai/Kimi-K2.5                      yukawa            5          0.400 ± 0.028        0.121 +0.244/−0.081
 ------------------------------------------------------------------------------------------------------------------------
 expl_score: explanation judge score in [0, 1], higher is better. Arithmetic mean.
 geom_pos_err: geometric mean of trajectory mean_pos_error across seeds (values < 1e-14 dropped); lower is better.

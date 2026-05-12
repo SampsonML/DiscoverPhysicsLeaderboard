@@ -58,12 +58,14 @@ AVG_RE = re.compile(
 )
 
 # Per-world row. n=1 rows omit the SE on expl and the +up/-down on err.
+# A geom_pos_err of "n/a" means no successful runs (typically when all
+# trials for that (model, world) failed); it's preserved as null.
 PER_WORLD_RE = re.compile(
     rf"^(?P<model>\S+)\s+"
     rf"(?P<world>\S+)\s+"
     rf"(?P<n>\d+)\s+"
     rf"(?P<expl_mean>{NUM})(?:\s*±\s*(?P<expl_se>{NUM}))?\s+"
-    rf"(?P<err_mean>{NUM})(?:\s*\+(?P<err_up>{NUM})/[−-](?P<err_down>{NUM}))?\s*$"
+    rf"(?:(?P<err_mean>{NUM})(?:\s*\+(?P<err_up>{NUM})/[−-](?P<err_down>{NUM}))?|n/a)\s*$"
 )
 
 
@@ -124,7 +126,7 @@ def parse_per_world(path: Path) -> dict[str, dict[str, dict]]:
                 "se": float(d["expl_se"]) if d["expl_se"] else None,
             },
             "geom_pos_err": {
-                "mean": float(d["err_mean"]),
+                "mean": float(d["err_mean"]) if d["err_mean"] else None,
                 "up": float(d["err_up"]) if d["err_up"] else None,
                 "down": float(d["err_down"]) if d["err_down"] else None,
             },

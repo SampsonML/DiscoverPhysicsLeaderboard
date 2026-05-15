@@ -189,12 +189,12 @@ function renderHeatmap() {
 // ---------------- Figures ----------------
 
 const PLOT_FONT    = 'Inconsolata, Menlo, monospace';
-// Phosphor / Lab CRT palette — must mirror the CSS root variables in style.css.
+// Deep-space blue palette — must mirror the CSS root variables in style.css.
 const COLOR_ACCENT = '#ffb000';   // CRT amber
-const COLOR_INK    = '#c8e8c8';   // phosphor green text
-const COLOR_RULE   = '#1a3024';   // dim trace
-const COLOR_PAPER  = '#07100c';   // oscilloscope black
-const COLOR_MUTED  = '#6b8c75';   // faded phosphor
+const COLOR_INK    = '#a8c8ff';   // phosphor blue text
+const COLOR_RULE   = '#1d2d56';   // dim grid
+const COLOR_PAPER  = '#050a18';   // deep navy-black
+const COLOR_MUTED  = '#6080b8';   // faded phosphor blue
 
 // Per-model colors for line traces. Designed to read well on the dark
 // phosphor background: bright, well-separated hues evoking multi-channel

@@ -5,17 +5,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,800&family=Inconsolata:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap');
 
 :root {
-  /* Phosphor / Lab CRT palette — phosphor green text on oscilloscope-black,
+  /* Deep-space blue palette — phosphor-blue text on navy-black,
      CRT amber accent. */
-  --ink: #c8e8c8;          /* phosphor green text */
-  --paper: #07100c;        /* oscilloscope black background */
-  --surface: #0e1a14;      /* slightly lighter than paper, for table/card backgrounds */
-  --rule: #1a3024;         /* dim trace lines */
-  --muted: #6b8c75;        /* faded phosphor */
-  --soft: #122b1c;         /* dim green-black highlight */
+  --ink: #a8c8ff;          /* phosphor blue text */
+  --paper: #050a18;        /* deep navy-black background */
+  --surface: #0a1428;      /* slightly lighter than paper, for table/card backgrounds */
+  --rule: #1d2d56;         /* dim grid lines */
+  --muted: #6080b8;        /* faded phosphor blue */
+  --soft: #0e1c3a;         /* dim blue-black highlight */
   --accent: #ffb000;       /* CRT amber, used sparingly */
-  --accent-soft: #4d3300;  /* deep amber-black */
-  --teal: #4ad9c0;         /* phosphor cyan secondary */
+  --accent-soft: #3d2700;  /* deep amber-black */
+  --teal: #5ec8e8;         /* phosphor cyan secondary */
   --good: #6dd96d;
   --ok: #ffb000;
   --bad: #e85a5a;

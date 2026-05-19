@@ -57,9 +57,6 @@ changes — no figures to upload.
 The only static figure is the pipeline schematic, loaded from
 `figures/pipeline.png`. The page degrades gracefully if it is missing.
 
-## Adding the paper PDF
-
-Drop the compiled PDF as `paper.pdf` in the root.
 
 ## Submitting results
 

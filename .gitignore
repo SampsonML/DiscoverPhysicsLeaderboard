@@ -35,3 +35,6 @@ CLAUDE.md
 .claude/
 .claude.json
 .claude.local.json
+
+# Supplementary results files (not committed)
+model-results/per_world/summary_for_coulomb.txt

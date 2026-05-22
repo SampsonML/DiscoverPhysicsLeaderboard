@@ -1,7 +1,7 @@
 {
   "metadata": {
     "benchmark_version": "new_production_16",
-    "last_updated": "2026-05-20",
+    "last_updated": "2026-05-22",
     "num_worlds": 11,
     "num_seeds": 5,
     "default_rounds_budget": 16,
@@ -23,7 +23,7 @@
     {
       "model": "claude-opus-4-7",
       "n_trials": 110,
-      "passed": 37,
+      "passed": 29,
       "passed_total": 110,
       "explanation_score": {
         "mean": 0.6145,
@@ -36,29 +36,29 @@
       },
       "pass_at_k": {
         "1": {
-          "mean": 33.7273,
-          "se": 0.4048,
+          "mean": 26.3818,
+          "se": 0.2808,
           "raw": "4/11"
         },
         "2": {
-          "mean": 46.0091,
-          "se": 0.2907,
-          "raw": "9/11"
+          "mean": 36.7955,
+          "se": 0.2207,
+          "raw": "8/11"
         },
         "3": {
-          "mean": 53.5273,
-          "se": 0.1907,
-          "raw": "10/11"
+          "mean": 43.05,
+          "se": 0.147,
+          "raw": "8/11"
         },
         "4": {
-          "mean": 59.2182,
-          "se": 0.1284,
-          "raw": "12/11"
+          "mean": 47.3318,
+          "se": 0.0708,
+          "raw": "10/11"
         },
         "5": {
-          "mean": 63.6364,
+          "mean": 50.0,
           "se": 0.0,
-          "raw": "14/11"
+          "raw": "11/11"
         }
       },
       "per_world": {
@@ -199,7 +199,7 @@
     {
       "model": "gpt-5.5",
       "n_trials": 107,
-      "passed": 30,
+      "passed": 24,
       "passed_total": 107,
       "explanation_score": {
         "mean": 0.5972,
@@ -212,29 +212,29 @@
       },
       "pass_at_k": {
         "1": {
-          "mean": 27.0227,
-          "se": 0.1809,
-          "raw": "8/11"
+          "mean": 21.7045,
+          "se": 0.108,
+          "raw": "6/11"
         },
         "2": {
-          "mean": 35.0136,
-          "se": 0.1669,
-          "raw": "10/11"
+          "mean": 27.6409,
+          "se": 0.139,
+          "raw": "6/11"
         },
         "3": {
-          "mean": 40.4591,
-          "se": 0.1483,
-          "raw": "10/11"
+          "mean": 30.8545,
+          "se": 0.1394,
+          "raw": "6/11"
         },
         "4": {
-          "mean": 43.6545,
-          "se": 0.1146,
-          "raw": "10/11"
+          "mean": 33.7,
+          "se": 0.1142,
+          "raw": "8/11"
         },
         "5": {
-          "mean": 45.4545,
+          "mean": 36.3636,
           "se": 0.0,
-          "raw": "10/11"
+          "raw": "8/11"
         }
       },
       "per_world": {
@@ -551,7 +551,7 @@
     {
       "model": "Qwen3.5-397B-A17B",
       "n_trials": 71,
-      "passed": 6,
+      "passed": 5,
       "passed_total": 71,
       "explanation_score": {
         "mean": 0.3634,
@@ -564,18 +564,18 @@
       },
       "pass_at_k": {
         "1": {
-          "mean": 5.4136,
-          "se": 0.1088,
+          "mean": 4.4818,
+          "se": 0.0914,
           "raw": "2/11"
         },
         "2": {
-          "mean": 8.25,
-          "se": 0.0558,
+          "mean": 7.3136,
+          "se": 0.0702,
           "raw": "2/11"
         },
         "3": {
-          "mean": 9.0909,
-          "se": 0.0,
+          "mean": 8.6273,
+          "se": 0.0435,
           "raw": "2/11"
         },
         "4": {
@@ -727,7 +727,7 @@
     {
       "model": "Kimi-K2.5",
       "n_trials": 104,
-      "passed": 4,
+      "passed": 3,
       "passed_total": 104,
       "explanation_score": {
         "mean": 0.2904,
@@ -740,23 +740,23 @@
       },
       "pass_at_k": {
         "1": {
-          "mean": 3.5409,
-          "se": 0.1078,
+          "mean": 2.5909,
+          "se": 0.1146,
           "raw": "2/11"
         },
         "2": {
-          "mean": 6.0909,
-          "se": 0.0993,
+          "mean": 4.7455,
+          "se": 0.1212,
           "raw": "2/11"
         },
         "3": {
-          "mean": 8.1591,
-          "se": 0.0581,
+          "mean": 6.7909,
+          "se": 0.0986,
           "raw": "2/11"
         },
         "4": {
-          "mean": 9.0909,
-          "se": 0.0,
+          "mean": 8.1909,
+          "se": 0.0573,
           "raw": "2/11"
         },
         "5": {
@@ -1072,182 +1072,6 @@
             "mean": 0.058,
             "up": 0.223,
             "down": 0.046
-          }
-        }
-      }
-    },
-    {
-      "model": "gpt-oss-120b",
-      "n_trials": 100,
-      "passed": 2,
-      "passed_total": 100,
-      "explanation_score": {
-        "mean": 0.221,
-        "se": 0.0195
-      },
-      "normalized_mse": {
-        "mean": 1.0678,
-        "up": 1.1,
-        "down": 0.5418
-      },
-      "pass_at_k": {
-        "1": {
-          "mean": 1.7045,
-          "se": 0.0696,
-          "raw": "1/11"
-        },
-        "2": {
-          "mean": 3.0273,
-          "se": 0.0678,
-          "raw": "1/11"
-        },
-        "3": {
-          "mean": 4.0455,
-          "se": 0.045,
-          "raw": "1/11"
-        },
-        "4": {
-          "mean": 4.5455,
-          "se": 0.0,
-          "raw": "1/11"
-        },
-        "5": {
-          "mean": 4.5455,
-          "se": 0.0,
-          "raw": "1/11"
-        }
-      },
-      "per_world": {
-        "circle": {
-          "n": 5,
-          "explanation_score": {
-            "mean": 0.12,
-            "se": 0.043
-          },
-          "geom_pos_err": {
-            "mean": 1.407,
-            "up": 0.832,
-            "down": 0.523
-          }
-        },
-        "coulomb": {
-          "n": 5,
-          "explanation_score": {
-            "mean": 0.56,
-            "se": 0.054
-          },
-          "geom_pos_err": {
-            "mean": 10.8,
-            "up": 17.473,
-            "down": 6.674
-          }
-        },
-        "dark_matter": {
-          "n": 4,
-          "explanation_score": {
-            "mean": 0.225,
-            "se": 0.064
-          },
-          "geom_pos_err": {
-            "mean": 2654.129,
-            "up": 8154.611,
-            "down": 2002.397
-          }
-        },
-        "ether": {
-          "n": 5,
-          "explanation_score": {
-            "mean": 0.2,
-            "se": 0.068
-          },
-          "geom_pos_err": {
-            "mean": 20379.128,
-            "up": 6310836.486,
-            "down": 20313.531
-          }
-        },
-        "extra_dimensions": {
-          "n": 5,
-          "explanation_score": {
-            "mean": 0.18,
-            "se": 0.018
-          },
-          "geom_pos_err": {
-            "mean": 12.808,
-            "up": 307.898,
-            "down": 12.297
-          }
-        },
-        "fractional": {
-          "n": 4,
-          "explanation_score": {
-            "mean": 0.325,
-            "se": 0.094
-          },
-          "geom_pos_err": {
-            "mean": 0.007,
-            "up": 0.026,
-            "down": 0.006
-          }
-        },
-        "gravity": {
-          "n": 5,
-          "explanation_score": {
-            "mean": 0.62,
-            "se": 0.086
-          },
-          "geom_pos_err": {
-            "mean": 0.002,
-            "up": 0.015,
-            "down": 0.001
-          }
-        },
-        "hubble": {
-          "n": 5,
-          "explanation_score": {
-            "mean": 0.18,
-            "se": 0.033
-          },
-          "geom_pos_err": {
-            "mean": 45135.599,
-            "up": 4715410.538,
-            "down": 44707.66
-          }
-        },
-        "oscillator": {
-          "n": 5,
-          "explanation_score": {
-            "mean": 0.26,
-            "se": 0.072
-          },
-          "geom_pos_err": {
-            "mean": 0.412,
-            "up": 0.836,
-            "down": 0.276
-          }
-        },
-        "three_species": {
-          "n": 5,
-          "explanation_score": {
-            "mean": 0.14,
-            "se": 0.06
-          },
-          "geom_pos_err": {
-            "mean": 6.412,
-            "up": 0.069,
-            "down": 0.068
-          }
-        },
-        "yukawa": {
-          "n": 4,
-          "explanation_score": {
-            "mean": 0.375,
-            "se": 0.054
-          },
-          "geom_pos_err": {
-            "mean": 0.032,
-            "up": 0.051,
-            "down": 0.02
           }
         }
       }
@@ -1600,6 +1424,182 @@
             "mean": 4.494,
             "up": 80.932,
             "down": 4.258
+          }
+        }
+      }
+    },
+    {
+      "model": "gpt-oss-120b",
+      "n_trials": 100,
+      "passed": 0,
+      "passed_total": 100,
+      "explanation_score": {
+        "mean": 0.221,
+        "se": 0.0195
+      },
+      "normalized_mse": {
+        "mean": 1.0678,
+        "up": 1.1,
+        "down": 0.5418
+      },
+      "pass_at_k": {
+        "1": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "2": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "3": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "4": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        },
+        "5": {
+          "mean": 0.0,
+          "se": 0.0,
+          "raw": "0/11"
+        }
+      },
+      "per_world": {
+        "circle": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.12,
+            "se": 0.043
+          },
+          "geom_pos_err": {
+            "mean": 1.407,
+            "up": 0.832,
+            "down": 0.523
+          }
+        },
+        "coulomb": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.56,
+            "se": 0.054
+          },
+          "geom_pos_err": {
+            "mean": 10.8,
+            "up": 17.473,
+            "down": 6.674
+          }
+        },
+        "dark_matter": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.225,
+            "se": 0.064
+          },
+          "geom_pos_err": {
+            "mean": 2654.129,
+            "up": 8154.611,
+            "down": 2002.397
+          }
+        },
+        "ether": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.2,
+            "se": 0.068
+          },
+          "geom_pos_err": {
+            "mean": 20379.128,
+            "up": 6310836.486,
+            "down": 20313.531
+          }
+        },
+        "extra_dimensions": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.18,
+            "se": 0.018
+          },
+          "geom_pos_err": {
+            "mean": 12.808,
+            "up": 307.898,
+            "down": 12.297
+          }
+        },
+        "fractional": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.325,
+            "se": 0.094
+          },
+          "geom_pos_err": {
+            "mean": 0.007,
+            "up": 0.026,
+            "down": 0.006
+          }
+        },
+        "gravity": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.62,
+            "se": 0.086
+          },
+          "geom_pos_err": {
+            "mean": 0.002,
+            "up": 0.015,
+            "down": 0.001
+          }
+        },
+        "hubble": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.18,
+            "se": 0.033
+          },
+          "geom_pos_err": {
+            "mean": 45135.599,
+            "up": 4715410.538,
+            "down": 44707.66
+          }
+        },
+        "oscillator": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.26,
+            "se": 0.072
+          },
+          "geom_pos_err": {
+            "mean": 0.412,
+            "up": 0.836,
+            "down": 0.276
+          }
+        },
+        "three_species": {
+          "n": 5,
+          "explanation_score": {
+            "mean": 0.14,
+            "se": 0.06
+          },
+          "geom_pos_err": {
+            "mean": 6.412,
+            "up": 0.069,
+            "down": 0.068
+          }
+        },
+        "yukawa": {
+          "n": 4,
+          "explanation_score": {
+            "mean": 0.375,
+            "se": 0.054
+          },
+          "geom_pos_err": {
+            "mean": 0.032,
+            "up": 0.051,
+            "down": 0.02
           }
         }
       }

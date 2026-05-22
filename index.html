@@ -74,7 +74,7 @@
           explanation and a Python implementation of the inferred law.
         </p>
         <p>
-          Across eleven frontier models, the strongest agents pass only a bit over half of the worlds and
+          Across eleven frontier models, the strongest agents pass only about half of the worlds and
           consistently fail on those where latent structure must be uncovered. Predictive accuracy
           and conceptual understanding decouple: the model with the lowest trajectory MSE is not
           the one with the highest explanation score.
@@ -90,7 +90,7 @@
             <span class="label">Models evaluated</span>
           </div>
           <div class="stat">
-            <span class="num">~64<span style="font-size:0.6em">%</span></span>
+            <span class="num">~50<span style="font-size:0.6em">%</span></span>
             <span class="label">Best pass@5</span>
           </div>
         </div>
@@ -117,7 +117,7 @@
 
     <p style="font-size:0.85rem; color:var(--muted); margin-top:1rem; line-height:1.5; max-width:48rem;">
       A world is considered a pass if per-trajectory normalized MSE is below 0.1
-      <em>and</em> the explanation score is &ge; 0.75. Pass@k is the expected percentage
+      <em>and</em> the explanation score is &ge; 0.9. Pass@k is the expected percentage
       of worlds passed when k seeds are sampled (without replacement) from a 5-seed
       pool, averaged over 1,000 Monte Carlo draws. Norm. MSE is the geometric mean
       of per-trajectory normalized MSE; lower is better.

@@ -15,6 +15,9 @@ Normalization:
     becomes `gpt-oss-120b` (last segment after the final '/').
   - The benchmark's `coulomb_easy` world is renamed to `coulomb` to match the
     public-facing world id in data/worlds.json.
+  - Per-world rows for worlds not listed in data/worlds.json (the private,
+    held-out worlds) are dropped: only public worlds appear in per_world.
+    The pooled per-model stats still cover all 22 worlds.
 
 Run from the repo root:  python build_data.py
 """
@@ -48,8 +51,8 @@ AVG_RE = re.compile(
     rf"(?P<passed>\d+)/(?P<passed_total>\d+)\s+"
     rf"(?P<expl_mean>{NUM})\s*±\s*(?P<expl_se>{NUM})\s+"
     rf"(?P<mse_mean>{NUM})\s*\+(?P<mse_up>{NUM})/[−-](?P<mse_down>{NUM})\s+"
-    rf"(?P<k1>\d+)/\d+\s+(?P<k2>\d+)/\d+\s+(?P<k3>\d+)/\d+\s+"
-    rf"(?P<k4>\d+)/\d+\s+(?P<k5>\d+)/\d+\s+"
+    rf"(?P<k1>\d+)/(?P<k1d>\d+)\s+(?P<k2>\d+)/(?P<k2d>\d+)\s+(?P<k3>\d+)/(?P<k3d>\d+)\s+"
+    rf"(?P<k4>\d+)/(?P<k4d>\d+)\s+(?P<k5>\d+)/(?P<k5d>\d+)\s+"
     rf"(?P<E1m>{NUM})±(?P<E1s>{NUM})%\s+"
     rf"(?P<E2m>{NUM})±(?P<E2s>{NUM})%\s+"
     rf"(?P<E3m>{NUM})±(?P<E3s>{NUM})%\s+"
@@ -102,7 +105,7 @@ def parse_avg(path: Path) -> dict[str, dict]:
                 str(k): {
                     "mean": float(d[f"E{k}m"]),
                     "se": float(d[f"E{k}s"]),
-                    "raw": f"{d[f'k{k}']}/11",
+                    "raw": f"{d[f'k{k}']}/{d[f'k{k}d']}",
                 }
                 for k in (1, 2, 3, 4, 5)
             },
@@ -151,12 +154,13 @@ def main() -> int:
     results = []
     for model, agg in avg.items():
         pw = per_world.get(model, {})
+        private = sorted(w for w in pw if w not in world_ids)
+        if private:
+            print(f"note: {model}: ignoring private worlds {private}", file=sys.stderr)
+            pw = {w: v for w, v in pw.items() if w in world_ids}
         missing = [w for w in world_ids if w not in pw]
-        extra = [w for w in pw if w not in world_ids]
         if missing:
             print(f"warning: {model} missing worlds {missing}", file=sys.stderr)
-        if extra:
-            print(f"warning: {model} has unknown worlds {extra}", file=sys.stderr)
         results.append({"model": model, **agg, "per_world": pw})
 
     results.sort(key=lambda r: r["pass_at_k"]["5"]["mean"], reverse=True)

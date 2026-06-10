@@ -238,10 +238,24 @@ function renderPareto() {
   // next 0.1 for clean tick labels.
   const yMax = Math.min(1, Math.ceil((Math.max(...ys) + 0.05) * 10) / 10);
 
-  // Only the top-2 models (by Pass@5) get on-plot labels. The rest are
-  // identifiable via hover.
-  const TOP_LABELS = 2;
-  const labelText = rows.map((r, i) => i < TOP_LABELS ? '  ' + r.model : '');
+  // Only the top-4 models (by Pass@5) get on-plot labels. The rest are
+  // identifiable via hover. Placements are hand-tuned per model so labels
+  // of nearby points don't overlap; unlisted models fall back to the right.
+  const TOP_LABELS = 4;
+  const LABEL_POS = {
+    'claude-fable-5':  'middle right',
+    'gpt-5.5':         'bottom center',
+    'claude-opus-4-7': 'top center',
+    'claude-opus-4-8': 'middle right',
+  };
+  const labelPos = rows.map(r => LABEL_POS[r.model] || 'middle right');
+  const labelText = rows.map((r, i) => {
+    if (i >= TOP_LABELS) return '';
+    // Pad on the marker side so right/left-anchored labels don't touch the dot.
+    if (labelPos[i].endsWith('right')) return '  ' + r.model;
+    if (labelPos[i].endsWith('left')) return r.model + '  ';
+    return r.model;
+  });
   const sizes  = rows.map((_, i) => i < TOP_LABELS ? 14 : 10);
   const colors = rows.map((_, i) => i === 0 ? COLOR_ACCENT : COLOR_INK);
   const opacities = rows.map((_, i) => i < TOP_LABELS ? 0.95 : 0.55);
@@ -250,7 +264,7 @@ function renderPareto() {
     x: xs,
     y: ys,
     text: labelText,
-    textposition: 'middle right',
+    textposition: labelPos,
     textfont: { size: 15, family: PLOT_FONT, color: COLOR_INK },
     mode: 'markers+text',
     type: 'scatter',
